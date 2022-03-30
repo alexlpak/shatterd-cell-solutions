@@ -6,6 +6,11 @@ export const themes = {
     },
     maxWidth: '60rem',
     colors: {
+        status: {
+            success: '#4caf50',
+            error: '#e91e1e',
+            warning: '#ff9800'
+        },
         primary: {
             main: '#0085DC',
             hover: '#009aff',

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Input from '../../../components/Input';
+import Select from '../../../components/Select';
 
 const DeviceInfoStep = ({ name, onChange }) => {
     const [data, setData] = useState({});
@@ -14,8 +15,24 @@ const DeviceInfoStep = ({ name, onChange }) => {
 
     return (
         <>
-            <Input name='brand' label='Device Brand' onChange={handleChange} />
-            <Input name='model' label='Device Model' onChange={handleChange} />
+            <Select
+                name='type'
+                label='Type'
+                options={['Apple','Samsung','LG','Logitech','Sony','Yamaha','Fender','Gibson']}
+                onChange={handleChange}
+            />
+            <Select
+                name='brand'
+                label='Brand'
+                options={['Apple','Samsung','LG','Logitech','Sony','Yamaha','Fender','Gibson']}
+                onChange={handleChange}
+            />
+            <Select
+                name='model'
+                label='Model'
+                options={['Apple','Samsung','LG','Logitech','Sony','Yamaha','Fender','Gibson']}
+                onChange={handleChange}
+            />
         </>
     );
 };

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Flex } from './Flex.styled';
 import { css } from 'styled-components';
@@ -10,7 +10,7 @@ const InputWrapper = styled(Flex).attrs({
 })`
     position: relative;
     border: ${props => props.border || `2px solid ${props.theme.colors.primary.main}`};
-    width: ${props => props.width || '100%'};
+    width: ${props => props.width || '25rem'};
     border-radius: .5rem;
 `;
 
@@ -56,8 +56,8 @@ const InputStyled = styled.input`
     };
 `;
 
-const Input = ({ type, name, label, onChange }) => {
-    const [value, setValue] = useState('');
+const Input = ({ type, name, label, onChange, initialValue }) => {
+    const [value, setValue] = useState(initialValue || '');
 
     useEffect(() => {
         if (onChange) onChange({ [name]: value });
@@ -69,11 +69,15 @@ const Input = ({ type, name, label, onChange }) => {
 
     const clearInput = () => {
         setValue('');
+        inputEl.current.focus();
     };
+
+    const inputEl = useRef(null);
 
     return (
         <InputWrapper>
             <InputStyled
+                ref={inputEl}
                 type={type}
                 name={name}
                 value={value}
