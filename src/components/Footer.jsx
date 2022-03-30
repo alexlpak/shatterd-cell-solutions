@@ -9,7 +9,7 @@ import { Link } from './Link.styled';
 const Footer = () => {
     const theme = useTheme();
     return (
-        <Section as='footer' padding='4rem' backgroundColor={theme.colors.primary} color='white'>
+        <Section as='footer' padding='4rem' backgroundColor={theme.colors.primary.main} color='white'>
             <Flex alignItems='center' justifyContent='space-between' width='100%'>
                 <Text maxWidth='unset'>Copyright © 2022 Shatter'd Cell Solutions - All Rights Reserved.</Text>
                 <Flex gap='1rem'>

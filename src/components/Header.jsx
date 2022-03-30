@@ -6,6 +6,7 @@ import CompanyLogo from '../assets/images/shatterd-cell-solutions-logo.svg';
 import { RouterLink } from './RouterLink.styled';
 import { Link } from './Link.styled';
 import styled from 'styled-components';
+import { smoothScrollToElement } from '../helper/smoothScrollToElement';
 
 const HeaderStyled = styled(Section)`
     position: sticky;
@@ -23,10 +24,10 @@ const Header = () => {
                 </RouterLink>
                 <Flex gap='2rem'>
                     <RouterLink to='/'><Text fontWeight={500}>Home</Text></RouterLink>
-                    <Link><Text fontWeight={500}>Services</Text></Link>
-                    <Link><Text fontWeight={500}>Reviews</Text></Link>
-                    <Link><Text fontWeight={500}>Sell</Text></Link>
-                    <Link><Text fontWeight={500}>Contact</Text></Link>
+                    <Link onClick={() => smoothScrollToElement('#services')}><Text fontWeight={500}>Services</Text></Link>
+                    <Link onClick={() => smoothScrollToElement('#reviews')}><Text fontWeight={500}>Reviews</Text></Link>
+                    <Link onClick={() => smoothScrollToElement('#promotions')}><Text fontWeight={500}>Sell</Text></Link>
+                    <Link onClick={() => smoothScrollToElement('#contact')}><Text fontWeight={500}>Contact</Text></Link>
                 </Flex>
             </Flex>
         </HeaderStyled>

@@ -25,7 +25,6 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        overflow-x: hidden;
         line-height: normal;
     }
 `;

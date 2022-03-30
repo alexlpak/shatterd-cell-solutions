@@ -10,7 +10,7 @@ const ReviewCard = (props) => {
     const theme = useTheme();
 
     return (
-        <Card padding='2rem' border={`2px solid ${theme.colors.lightGray}`}>
+        <Card padding='2rem' border={`2px solid ${theme.colors.lightGray.main}`}>
             <Flex gap='1rem' alignItems='center' width='100%'>
                 <ProfileImage size='4rem' src={props.imgSrc || null} />
                 <Flex flexDirection='column'>
@@ -25,10 +25,10 @@ const ReviewCard = (props) => {
             <Flex>
                 {new Array(5).fill('').map((item, index) => {
                     if (index+1 <= props.rating) {
-                        return <FontAwesomeIcon key={props.name+index} icon={faStar} color={theme.colors.primary} />
+                        return <FontAwesomeIcon key={props.name+index} icon={faStar} color={theme.colors.primary.main} />
                     }
                     else {
-                        return <FontAwesomeIcon key={props.name+index} icon={faStar} color={theme.colors.lightGray} />
+                        return <FontAwesomeIcon key={props.name+index} icon={faStar} color={theme.colors.lightGray.main} />
                     };
                 })}
             </Flex>

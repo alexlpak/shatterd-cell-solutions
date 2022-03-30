@@ -1,35 +1,34 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState, Children } from 'react';
 import { Flex } from './Flex.styled';
 import Input from './Input';
 
-const Form = (props) => {
-    const [data, setData] = useState({});
+const Form = ({ name, onComplete, children }) => {
     const [formComplete, setFormComplete] = useState(false);
+    const [data, setData] = useState({});
 
     const updateData = (key, value) => {
         setData(prevData => ({ ...prevData, [key]: value }));
     };
 
     const checkFormCompletion = () => {
-        return props.fields.map(field => field.name).every(name => data[name])
+        return Children.toArray(children).every(child => data[child.props.name]);
     };
 
     useEffect(() => {
-        console.log(data);
+        console.log('Form (data):',data);
         setFormComplete(checkFormCompletion());
     }, [data]);
 
     useEffect(() => {
-        console.log(formComplete);
-        if (props.onComplete) props.onComplete();
+        console.log('Form (formComplete):',formComplete);
+        if (onComplete && formComplete) onComplete(data);
     }, [formComplete]);
 
     return (
         <Flex as='form' flexDirection='column' gap='1rem' width='100%'>
-            {props.fields.map(field => {
-                switch (field.component) {
-                    case 'Input': return <Input key={field.name} name={field.name} label={field.label} updateData={updateData} />
-                };
+            {Children.toArray(children).map(child => {
+                const newElement = React.cloneElement(child, { updateData: updateData });
+                return newElement;
             })}
         </Flex>
     );

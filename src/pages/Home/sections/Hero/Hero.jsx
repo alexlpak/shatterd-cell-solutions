@@ -11,10 +11,10 @@ const Hero = () => {
     return (
         <Section>
             <Flex justifyContent='center' gap='1rem'>
-                <Flex flexDirection='column' alignItems='flex-start' gap='1rem'>
+                <Flex flexDirection='column' alignItems='flex-start' justifyContent='center' gap='1rem'>
                     <Flex flexDirection='column'>
                         <Heading>Fast, affordable</Heading>
-                        <Heading color={theme.colors.primary}>device repair</Heading>
+                        <Heading color={theme.colors.primary.main}>device repair</Heading>
                     </Flex>
                     <HeroList />
                     <ScheduleAppointmentButton />

@@ -6,11 +6,36 @@ export const themes = {
     },
     maxWidth: '60rem',
     colors: {
-        primary: '#0085DC',
-        secondary: '#002137',
-        gray: '#C4C4C4',
-        lightGray: '#E3E3E3',
-        darkGray: '#585858'
+        primary: {
+            main: '#0085DC',
+            hover: '#009aff',
+            active: '#0066a9',
+            disabled: '#57b2ee'
+        },
+        secondary: {
+            main: '#002137',
+            hover: '',
+            active: '',
+            disabled: ''
+        },
+        gray: {
+            main: '#C4C4C4',
+            hover: '',
+            active: '',
+            disabled: ''
+        },
+        lightGray: {
+            main: '#E3E3E3',
+            hover: '#f4efef',
+            active: '#b6b6b6',
+            disabled: '#f4efef'
+        },
+        darkGray: {
+            main: '#585858',
+            hover: '',
+            active: '',
+            disabled: ''
+        },
     },
     spacing: {
         lg: '2rem',

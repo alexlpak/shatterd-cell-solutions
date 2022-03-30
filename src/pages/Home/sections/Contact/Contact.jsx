@@ -20,22 +20,22 @@ const data = {
 const ContactUs = () => {
     const theme = useTheme();
     return (
-        <Section backgroundColor={theme.colors.secondary} color='white'>
+        <Section backgroundColor={theme.colors.secondary.main} color='white' id='contact'>
             <Flex gap='1rem' flexDirection='column' alignItems='center'>
                 <Heading textAlign='center'>{data.title}</Heading>
                 <Text textAlign='center' whiteSpace='break-spaces'>{data.body}</Text>
                 <Flex gap='1rem'>
                     <Flex gap='1rem' alignItems='flex-start' flexDirection='column'>
                         <Flex gap='1rem' alignItems='center' justifyContent='center'>
-                            <FontAwesomeIcon icon={faLocationDot} size='2x' color={theme.colors.primary} />
+                            <FontAwesomeIcon icon={faLocationDot} size='2x' color={theme.colors.primary.main} />
                             <Text whiteSpace='break-spaces'>{data.address}</Text>
                         </Flex>
                         <Flex gap='1rem' alignItems='center' justifyContent='center'>
-                            <FontAwesomeIcon icon={faPhone} size='2x' color={theme.colors.primary} />
+                            <FontAwesomeIcon icon={faPhone} size='2x' color={theme.colors.primary.main} />
                             <Text whiteSpace='break-spaces'>{data.phone}</Text>
                         </Flex>
                         <Flex gap='1rem' alignItems='center' justifyContent='center'>
-                            <FontAwesomeIcon icon={faClock} size='2x' color={theme.colors.primary} />
+                            <FontAwesomeIcon icon={faClock} size='2x' color={theme.colors.primary.main} />
                             <Text whiteSpace='break-spaces'>{data.hours}</Text>
                         </Flex>
                         <Link href='mailto:abc@example.com?subject=ContactUs&body=Message'><Button primary>Send a Message</Button></Link>

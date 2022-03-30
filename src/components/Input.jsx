@@ -9,17 +9,9 @@ const InputWrapper = styled(Flex).attrs({
     alignItems: 'stretch'
 })`
     position: relative;
-    border: ${props => props.border || `2px solid ${props.theme.colors.primary}`};
+    border: ${props => props.border || `2px solid ${props.theme.colors.primary.main}`};
     width: ${props => props.width || '100%'};
     border-radius: .5rem;
-`;
-
-const InputStyled = styled.input`
-    padding: ${props => props.value ? '1rem 0rem 1rem 1rem' : '1rem'};
-    border: none;
-    background-color: transparent;
-    width: 100%;
-    border-radius: .5rem 0rem 0rem .5rem;
 `;
 
 const Placeholder = styled.span`
@@ -31,22 +23,14 @@ const Placeholder = styled.span`
     transition: all 150ms ease;
     border-radius: .25rem;
     pointer-events: none;
-    ${props => {
-        return props.active && css`
-            opacity: 1;
-            color: ${props.theme.colors.primary};
-            top: calc(-.5rem - 2px);
-            background-color: white;
-            padding: 0rem 0.5rem;
-        `;
-    }}
 `;
 
 const ClearInputButton = styled(Flex).attrs({
     justifyContent: 'center',
     alignItems: 'center'
 })`
-    width: 3rem;
+    width: 0rem;
+    overflow: hidden;
     opacity: 0.5;
     transition: all 150ms ease;
     &:hover {
@@ -54,37 +38,51 @@ const ClearInputButton = styled(Flex).attrs({
     };
 `;
 
-const Input = (props) => {
+const InputStyled = styled.input`
+    padding: ${props => props.value ? '1rem 0rem 1rem 1rem' : '1rem'};
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    border-radius: .5rem 0rem 0rem .5rem;
+    &:focus ~ ${Placeholder}, &:not([value=""]) ~ ${Placeholder} {
+        opacity: 1;
+        color: ${props => props.theme.colors.primary.main};
+        top: calc(-.5rem - 2px);
+        background-color: white;
+        padding: 0rem 0.5rem;
+    };
+    &:not([value=""]) ~ ${ClearInputButton} {
+        width: 3rem;
+    };
+`;
+
+const Input = ({ type, name, label, onChange }) => {
     const [value, setValue] = useState('');
-    const [inFocus, setInFocus] = useState(false);
+
+    useEffect(() => {
+        if (onChange) onChange({ [name]: value });
+    }, [value]);
 
     const handleChange = (e) => {
         setValue(e.target.value);
-        if (props.updateData) props.updateData(props.name, e.target.value);
     };
-    
-    const handleFocus = () => setInFocus(true);
-    const handleBlur = () => setInFocus(false);
+
     const clearInput = () => {
         setValue('');
-        if (props.updateData) props.updateData(props.name, '');
-    }
+    };
 
     return (
         <InputWrapper>
             <InputStyled
-                type={props.type}
+                type={type}
+                name={name}
                 value={value}
                 onChange={handleChange}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-                name={props.name}
             />
-            <Placeholder active={inFocus || value}>{props.label}</Placeholder>
-            {value &&
+            <Placeholder>{label}</Placeholder>
             <ClearInputButton onClick={clearInput}>
                 <FontAwesomeIcon icon={faXmark} />
-            </ClearInputButton>}
+            </ClearInputButton>
         </InputWrapper>
     );
 };

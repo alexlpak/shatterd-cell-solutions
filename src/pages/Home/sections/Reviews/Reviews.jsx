@@ -25,9 +25,9 @@ const reviews = new Array(3).fill(data);
 const Reviews = () => {
     const theme = useTheme();
     return (
-        <Section>
+        <Section id='reviews'>
             <Flex flexDirection='column' alignItems='center' gap='1rem'>
-                <Heading color={theme.colors.primary}>{sectionData.title}</Heading>
+                <Heading color={theme.colors.primary.main}>{sectionData.title}</Heading>
                 <Text>{sectionData.description}</Text>
                 <Flex gap='1rem' childMaxWidth='15rem'>
                     {reviews.map((review, index) => <ReviewCard key={review.body+index} {...review} />)}

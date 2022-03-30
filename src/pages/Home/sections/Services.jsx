@@ -24,7 +24,7 @@ const sectionData = {
 const Services = () => {
     const theme = useTheme();
     return (
-        <Section backgroundColor={theme.colors.secondary} color='white'>
+        <Section backgroundColor={theme.colors.secondary.main} color='white' id='services'>
             <Flex flexDirection='column' alignItems='center' justifyContent='center' gap='1rem'>
                 <Heading>{sectionData.title}</Heading>
                 <Text>{sectionData.description}</Text>
@@ -33,11 +33,11 @@ const Services = () => {
                         return (
                             <IconCard
                                 key={card.title}
-                                iconColor={theme.colors.primary}
+                                iconColor={theme.colors.primary.main}
                                 size='2x'
                                 icon={card.icon}
                                 label={card.title}
-                                border={`2px solid ${theme.colors.primary}`}
+                                border={`2px solid ${theme.colors.primary.main}`}
                                 alignItems='center'
                                 justifyContent='center'
                             />

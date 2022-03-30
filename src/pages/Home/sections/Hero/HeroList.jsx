@@ -18,7 +18,7 @@ const HeroList = () => {
             {data.map(item => {
                 return (
                     <Flex as='li' key={item} gap='.5rem' alignItems='center'>
-                        <FontAwesomeIcon icon={faStar} color={theme.colors.primary} />
+                        <FontAwesomeIcon icon={faStar} color={theme.colors.primary.main} />
                         <Text>{item}</Text>
                     </Flex>
                 );
