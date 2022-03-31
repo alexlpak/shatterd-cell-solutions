@@ -4,6 +4,7 @@ import { Flex } from './Flex.styled';
 import { css } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const InputWrapper = styled(Flex).attrs({
     alignItems: 'stretch'
@@ -14,7 +15,7 @@ const InputWrapper = styled(Flex).attrs({
     border-radius: .5rem;
 `;
 
-const Placeholder = styled.span`
+const Placeholder = styled.label`
     opacity: 0.5;
     font-weight: 600;
     position: absolute;
@@ -56,8 +57,8 @@ const InputStyled = styled.input`
     };
 `;
 
-const Input = ({ type, name, label, onChange, initialValue }) => {
-    const [value, setValue] = useState(initialValue || '');
+const Input = ({ type, name, label, onChange}) => {
+    const [value, setValue] = useLocalStorage(name, '');
 
     useEffect(() => {
         if (onChange) onChange({ [name]: value });

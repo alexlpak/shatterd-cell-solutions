@@ -5,6 +5,7 @@ import { css } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { Text } from './Text.styled';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const InputWrapper = styled(Flex).attrs({
     alignItems: 'stretch'
@@ -15,7 +16,7 @@ const InputWrapper = styled(Flex).attrs({
     border-radius: .5rem;
 `;
 
-const Placeholder = styled.span`
+const Placeholder = styled.label`
     opacity: 0.5;
     font-weight: 600;
     position: absolute;
@@ -80,12 +81,20 @@ const SelectOptionsGroup = styled.ul`
     align-items: center;
     position: absolute;
     z-index: 999999;
-    top: ${props => props.optionsTop || 'calc(3rem + 2px)'};
+    top: ${props => props.location === 'below' && 'calc(3rem + 2px)'};
+    bottom: ${props => props.location === 'above' && 'calc(3rem + 2px)'};
     left: 0;
     width: 100%;
     background-color: white;
     border: ${props => props.border || `2px solid ${props.theme.colors.primary.main}`};
-    border-radius: 0rem 0rem .5rem .5rem;
+    border-radius: ${props => {
+        if (props.location === 'above') {
+            return '.5rem .5rem 0rem 0rem';
+        }
+        else if (props.location === 'below') {
+            return '0rem 0rem .5rem .5rem';
+        };
+    }};
     max-height: 20rem;
     overflow-y: scroll;
 `;
@@ -102,8 +111,8 @@ const SelectOption = styled.li`
     };
 `;
 
-const Select = ({ type, name, label, onChange, initialValue, options }) => {
-    const [value, setValue] = useState(initialValue || '');
+const Select = ({ type, name, label, onChange, options }) => {
+    const [value, setValue] = useLocalStorage(name, '');
     const [optionsOpen, setOptionsOpen] = useState(false);
     const [filteredOptions, setFilteredOptions] = useState(options);
 
@@ -111,6 +120,7 @@ const Select = ({ type, name, label, onChange, initialValue, options }) => {
         if (optionsOpen){
             setFilteredOptions(options);
         };
+        optionsOpen && console.log(optionsEl.current);
     }, [optionsOpen]);
 
     useEffect(() => {
@@ -170,7 +180,7 @@ const Select = ({ type, name, label, onChange, initialValue, options }) => {
                 <FontAwesomeIcon icon={faAngleDown} />
             </SelectIconButton>
             {options && optionsOpen &&
-                <SelectOptionsGroup ref={optionsEl}>
+                <SelectOptionsGroup ref={optionsEl} location='below'>
                 {options && filteredOptions.map(option => {
                     return (
                         <SelectOption

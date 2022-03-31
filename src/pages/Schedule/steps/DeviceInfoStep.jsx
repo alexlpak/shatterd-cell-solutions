@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Input from '../../../components/Input';
 import Select from '../../../components/Select';
+import NativeSelect from '../../../components/NativeSelect';
 
 const DeviceInfoStep = ({ name, onChange }) => {
     const [data, setData] = useState({});
@@ -15,19 +16,19 @@ const DeviceInfoStep = ({ name, onChange }) => {
 
     return (
         <>
-            <Select
+            <NativeSelect
                 name='type'
                 label='Type'
                 options={['Apple','Samsung','LG','Logitech','Sony','Yamaha','Fender','Gibson']}
                 onChange={handleChange}
             />
-            <Select
+            <NativeSelect
                 name='brand'
                 label='Brand'
                 options={['Apple','Samsung','LG','Logitech','Sony','Yamaha','Fender','Gibson']}
                 onChange={handleChange}
             />
-            <Select
+            <NativeSelect
                 name='model'
                 label='Model'
                 options={['Apple','Samsung','LG','Logitech','Sony','Yamaha','Fender','Gibson']}

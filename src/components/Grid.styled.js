@@ -17,4 +17,6 @@ export const Grid = styled.div`
     row-gap: ${props => props.rowGap};
     column-gap: ${props => props.columnGap};
     gap: ${props => props.gap};
+    align-items: ${props => props.alignItems};
+    justify-content: ${props => props.justifyContent};
 `;

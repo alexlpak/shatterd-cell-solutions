@@ -7,15 +7,26 @@ import { RouterLink } from './RouterLink.styled';
 import { Link } from './Link.styled';
 import styled from 'styled-components';
 import { smoothScrollToElement } from '../helper/smoothScrollToElement';
+import { useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react';
 
 const HeaderStyled = styled(Section)`
     position: sticky;
     top: 0;
     background-color: white;
     z-index: 999;
+    transition: all 150ms ease;
 `;
 
 const Header = () => {
+    const [isScheduleLocation, setIsScheduleLocation] = useState(false);
+
+    const location = useLocation();
+
+    useEffect(() => {
+        setIsScheduleLocation(location.pathname === '/schedule');
+    });
+
     return (
         <HeaderStyled as='header'>
             <Flex alignItems='center' justifyContent='space-between' width='100%'>
@@ -24,10 +35,14 @@ const Header = () => {
                 </RouterLink>
                 <Flex gap='2rem'>
                     <RouterLink to='/'><Text fontWeight={500}>Home</Text></RouterLink>
-                    <Link onClick={() => smoothScrollToElement('#services')}><Text fontWeight={500}>Services</Text></Link>
-                    <Link onClick={() => smoothScrollToElement('#reviews')}><Text fontWeight={500}>Reviews</Text></Link>
-                    <Link onClick={() => smoothScrollToElement('#promotions')}><Text fontWeight={500}>Sell</Text></Link>
-                    <Link onClick={() => smoothScrollToElement('#contact')}><Text fontWeight={500}>Contact</Text></Link>
+                    {!isScheduleLocation &&
+                        <>
+                            <Link onClick={() => smoothScrollToElement('#services')}><Text fontWeight={500}>Services</Text></Link>
+                            <Link onClick={() => smoothScrollToElement('#reviews')}><Text fontWeight={500}>Reviews</Text></Link>
+                            <Link onClick={() => smoothScrollToElement('#promotions')}><Text fontWeight={500}>Sell</Text></Link>
+                            <Link onClick={() => smoothScrollToElement('#contact')}><Text fontWeight={500}>Contact</Text></Link>
+                        </>
+                    }
                 </Flex>
             </Flex>
         </HeaderStyled>

@@ -9,13 +9,19 @@ import UserInfoStep from './steps/UserInfoStep';
 import { Text } from '../../components/Text.styled';
 import DeviceInfoStep from './steps/DeviceInfoStep';
 import ServiceStep from './steps/ServiceStep';
+import ScheduleStep from './steps/ScheduleStep';
 
 const Schedule = () => {
     const theme = useTheme();
     const [data, setData] = useState({});
     const [activeStep, setActiveStep] = useState(0);
     const [activeStepName, setActiveStepName] = useState('');
-    const [stepComplete, setStepComplete] = useState(false);
+
+    useEffect(() => {
+        return () => {
+            localStorage.clear()
+        };
+    }, []);
 
     useEffect(() => {
         setActiveStepName(steps[activeStep].name);
@@ -27,7 +33,6 @@ const Schedule = () => {
 
     useEffect(() => {
         console.log(data);
-        setStepComplete(checkFormCompletion(activeStepName, 'all'));
     }, [data]);
 
     const handleChange = (dataObj) => {
@@ -35,13 +40,6 @@ const Schedule = () => {
     };
 
     const steps = [
-        {
-            name: 'user',
-            display: 'User',
-            instructions: 'Please enter your information',
-            view: <UserInfoStep name='user' onChange={handleChange} />,
-            completion: 'all'
-        },
         {
             name: 'device',
             display: 'Device',
@@ -55,14 +53,22 @@ const Schedule = () => {
             instructions: 'Please select the service(s) you need',
             view: <ServiceStep name='service' onChange={handleChange} />,
             completion: 'one'
+        },
+        {
+            name: 'user',
+            display: 'User',
+            instructions: 'Please enter your information',
+            view: <UserInfoStep name='user' onChange={handleChange} />,
+            completion: 'all'
+        },
+        {
+            name: 'schedule',
+            display: 'Schedule',
+            instructions: 'Please select a date and time for your appointment',
+            view: <ScheduleStep name='schedule' onChange={handleChange} />,
+            completion: 'all'
         }
     ];
-
-    const getStepFromName = stepName => {
-        return steps.filter(step => {
-            return step.name === stepName;
-        })
-    };
 
     const checkFormCompletion = (stepName, completionMethod) => {
         const stepKeys = data[stepName] ? Object.keys(data[stepName]) : [];
@@ -117,4 +123,4 @@ const Schedule = () => {
     );
 };
 
-export default Schedule;
+export default Schedule

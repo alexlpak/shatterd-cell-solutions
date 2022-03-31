@@ -7,16 +7,18 @@ import { Text } from './Text.styled';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { Flex } from './Flex.styled';
+import useLocalStorage from '../hooks/useLocalStorage';
 library.add(fas);
 
 const IconCardStyled = styled(Card)`
+	user-select: none;
 	&:hover {
 		cursor: pointer;
 	};
 `;
 
 const IconCardSelect = (props) => {
-    const [selected, setSelected] = useState(false);
+    const [selected, setSelected] = useLocalStorage(props.name, false);
 
 	const handleClick = () => {
 		setSelected(prevState => !prevState);
