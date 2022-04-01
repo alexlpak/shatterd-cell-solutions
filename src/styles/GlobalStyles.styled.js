@@ -20,11 +20,17 @@ const GlobalStyle = createGlobalStyle`
     }
 
     html {
+        height: 100%;
+        width: 100%;
+        margin: 0;
         font-size: 14px;
         font-family: Montserrat, sans-serif;
     }
 
     body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
         line-height: normal;
     }
 `;

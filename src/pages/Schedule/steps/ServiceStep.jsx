@@ -2,7 +2,7 @@ import { Grid } from '../../../components/Grid.styled';
 import IconCardSelect from '../../../components/IconCardSelect';
 import { useEffect, useState } from 'react';
 
-const data = {
+export const serviceData = {
     services: [
         {
             name: 'screen-replacement',
@@ -53,7 +53,7 @@ const ServiceStep = ({ name, onChange }) => {
             gap='1rem'
             gridTemplateColumns='repeat(3, 10rem)'
         >
-            {data.services.map(service => {
+            {serviceData.services.map(service => {
                 return (
                     <IconCardSelect
                         key={service.name}

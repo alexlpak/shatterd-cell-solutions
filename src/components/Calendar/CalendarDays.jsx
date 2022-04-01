@@ -22,18 +22,23 @@ const CalendarDays = ({ year, month, selectedDate, setSelectedDate }) => {
         };
     };
 
+    const handleDayClick = (e) => {
+        const { value } = e.target;
+        setSelectedDate(prevValue => value === prevValue ? '' : value);
+    };
+
     const getCalendarDayElements = () => {
         let day = 1;
         const { startDay, daysInMonth } = getCalendarDays();
         const daysArray = new Array(7 * 6).fill();
         return daysArray.map((item, index) => {
-            const dateString = `${year}-${month}-${day}`;
+            const dateString = `${year}-${month+1}-${day}`;
             if (index >= startDay && day <= daysInMonth) {
                 const element = (
                     <CalendarDay
                         selected={selectedDate === dateString}
                         value={dateString}
-                        onClick={(e) => setSelectedDate(e.target.value)}
+                        onClick={handleDayClick}
                         key={dateString}
                     >
                         {day}

@@ -5,6 +5,7 @@ import { Flex } from './Flex.styled';
 import { Text } from './Text.styled';
 
 export const Button = styled.button`
+    border: none;
     ${props => {
         if (props.primary) {
             const { main, hover, active, disabled } = props.theme.colors.primary;
@@ -19,7 +20,8 @@ export const Button = styled.button`
         else if (props.secondary) {
             const { main, hover, active, disabled } = props.theme.colors.lightGray;
             return css`
-                background-color: ${main};
+                border: 2px solid ${props.theme.colors.primary.main};
+                background-color: white;
                 color: black;
                 &:hover { background-color: ${hover} };
                 &:active { background-color: ${active} };
@@ -28,7 +30,6 @@ export const Button = styled.button`
         };
     }};
     background-color: ${props => props.backgroundColor};
-    border: none;
     border-radius: .5rem;
     font-weight: 600;
     padding: .5rem 1rem;
@@ -48,6 +49,7 @@ export const CircleButton = styled(Button)`
     border-radius: 50%;
     ${props => {
         return props.complete && css`
+            border: none;
             background-color: ${props.theme.colors.status.success};
             color: white;
         `;
@@ -63,7 +65,7 @@ export const CircleButton = styled(Button)`
 const StepButton = ({ complete, children, label, active }) => {
     return (
         <Flex flexDirection='column' gap='1rem' alignItems='center'>
-            <CircleButton noHover size='3rem' complete={complete} primary={active}>
+            <CircleButton noHover size='3rem' secondary  primary={active} complete={complete}>
                 {complete ? <FontAwesomeIcon icon={faCheck} size='1x' /> : children}
             </CircleButton>
             <Text fontWeight={600}>{label}</Text>

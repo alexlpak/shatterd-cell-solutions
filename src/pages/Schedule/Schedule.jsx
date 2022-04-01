@@ -10,16 +10,25 @@ import { Text } from '../../components/Text.styled';
 import DeviceInfoStep from './steps/DeviceInfoStep';
 import ServiceStep from './steps/ServiceStep';
 import ScheduleStep from './steps/ScheduleStep';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import styled from 'styled-components';
+import ConfirmationDetails from './components/ConfirmationDetails';
+import Modal from '../../components/ConfirmModal';
+import { useNavigate } from 'react-router-dom';
 
 const Schedule = () => {
+    const navigate = useNavigate();
+
     const theme = useTheme();
-    const [data, setData] = useState({});
+    const [data, setData] = useLocalStorage('schedule-data',{});
     const [activeStep, setActiveStep] = useState(0);
     const [activeStepName, setActiveStepName] = useState('');
+    const [confirmModalOpen, setConfirmModalOpen] = useState(false);
 
     useEffect(() => {
+        console.log(activeStep, steps.length);
         return () => {
-            localStorage.clear()
+            localStorage.clear();
         };
     }, []);
 
@@ -55,10 +64,10 @@ const Schedule = () => {
             completion: 'one'
         },
         {
-            name: 'user',
-            display: 'User',
+            name: 'contact',
+            display: 'Contact',
             instructions: 'Please enter your information',
-            view: <UserInfoStep name='user' onChange={handleChange} />,
+            view: <UserInfoStep name='contact' onChange={handleChange} />,
             completion: 'all'
         },
         {
@@ -93,33 +102,47 @@ const Schedule = () => {
     const incrementStep = () => setActiveStep(prevStep => prevStep < steps.length-1 ? prevStep + 1 : prevStep);
 
     return (
-        <Section>
-            <Flex flexDirection='column' alignItems='center' gap='1rem'>
-                <Heading color={theme.colors.primary.main} textAlign='center'>Schedule Appointment</Heading>
-                <Flex gap='1rem' flexDirection='column' alignItems='center'>
-                    <Flex gap='1rem'>
-                        {steps.map((step, index) => {
-                            return (
-                                <StepButton
-                                    key={step.name}
-                                    complete={checkFormCompletion(step.name, step.completion)}
-                                    label={step.display}
-                                    active={activeStep === index}
-                                >
-                                    {index + 1}
-                                </StepButton>
-                            );
-                        })}
-                    </Flex>
-                    <Text fontWeight={600}>{steps[activeStep].instructions}</Text>
-                    {steps[activeStep].view}
-                    <Flex gap='1rem'>
-                        <Button secondary onClick={decrementStep}>Back</Button>
-                        <Button primary disabled={!checkFormCompletion(steps[activeStep].name, steps[activeStep].completion)} onClick={incrementStep}>Next</Button>
+        <>
+            {confirmModalOpen && (
+                <Modal
+                    title='Confirm'
+                    message='Please confirm your appointment details.'
+                    onCancel={() => setConfirmModalOpen(false)}
+                    onSubmit={() => navigate('/schedule/confirmation', { state: { data: data } })}
+                >
+                    <ConfirmationDetails data={data} />
+                </Modal>
+            )}
+            <Section>
+                <Flex flexDirection='column' alignItems='center' gap='1rem'>
+                    <Heading color={theme.colors.primary.main} textAlign='center'>Schedule Appointment</Heading>
+                    <Flex gap='1rem' flexDirection='column' alignItems='center'>
+                        <Flex gap='2em'>
+                            {steps.map((step, index) => {
+                                return (
+                                    <StepButton
+                                        key={step.name}
+                                        complete={checkFormCompletion(step.name, step.completion)}
+                                        label={step.display}
+                                        active={activeStep === index}
+                                    >
+                                        {index + 1}
+                                    </StepButton>
+                                );
+                            })}
+                        </Flex>
+                        <Text fontWeight={600}>{steps[activeStep].instructions}</Text>
+                        {steps[activeStep].view}
+                        <Flex gap='1rem'>
+                            {activeStep === 0 && <RouterLink to='/'><Button secondary>Cancel</Button></RouterLink>}
+                            {activeStep > 0 && <Button secondary onClick={decrementStep}>Back</Button>}
+                            {activeStep >= 0 && activeStep < steps.length-1 && <Button primary disabled={!checkFormCompletion(steps[activeStep].name, steps[activeStep].completion)} onClick={incrementStep}>Next</Button>}
+                            {activeStep === steps.length-1 && <Button primary onClick={() => setConfirmModalOpen(true)}>Finish</Button>}
+                        </Flex>
                     </Flex>
                 </Flex>
-            </Flex>
-        </Section>
+            </Section>
+        </>
     );
 };
 
