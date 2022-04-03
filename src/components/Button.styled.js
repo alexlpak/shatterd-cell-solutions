@@ -3,8 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { Flex } from './Flex.styled';
 import { Text } from './Text.styled';
+import { motion } from 'framer-motion';
 
-export const Button = styled.button`
+export const Button = styled(motion.button)`
     border: none;
     ${props => {
         if (props.primary) {

@@ -15,6 +15,7 @@ import styled from 'styled-components';
 import ConfirmationDetails from './components/ConfirmationDetails';
 import Modal from '../../components/ConfirmModal';
 import { useNavigate } from 'react-router-dom';
+import ConfirmationPage from './steps/ConfirmationPage';
 
 const Schedule = () => {
     const navigate = useNavigate();
@@ -24,6 +25,7 @@ const Schedule = () => {
     const [activeStep, setActiveStep] = useState(0);
     const [activeStepName, setActiveStepName] = useState('');
     const [confirmModalOpen, setConfirmModalOpen] = useState(false);
+    const [confirmationVisible, setConfirmationVisible] = useState(false);
 
     useEffect(() => {
         console.log(activeStep, steps.length);
@@ -108,12 +110,15 @@ const Schedule = () => {
                     title='Confirm'
                     message='Please confirm your appointment details.'
                     onCancel={() => setConfirmModalOpen(false)}
-                    onSubmit={() => navigate('/schedule/confirmation', { state: { data: data } })}
+                    onSubmit={() => {
+                        setConfirmModalOpen(false);
+                        setConfirmationVisible(true);
+                    }}
                 >
                     <ConfirmationDetails data={data} />
                 </Modal>
             )}
-            <Section>
+            {!confirmationVisible && <Section>
                 <Flex flexDirection='column' alignItems='center' gap='1rem'>
                     <Heading color={theme.colors.primary.main} textAlign='center'>Schedule Appointment</Heading>
                     <Flex gap='1rem' flexDirection='column' alignItems='center'>
@@ -137,11 +142,12 @@ const Schedule = () => {
                             {activeStep === 0 && <RouterLink to='/'><Button secondary>Cancel</Button></RouterLink>}
                             {activeStep > 0 && <Button secondary onClick={decrementStep}>Back</Button>}
                             {activeStep >= 0 && activeStep < steps.length-1 && <Button primary disabled={!checkFormCompletion(steps[activeStep].name, steps[activeStep].completion)} onClick={incrementStep}>Next</Button>}
-                            {activeStep === steps.length-1 && <Button primary onClick={() => setConfirmModalOpen(true)}>Finish</Button>}
+                            {activeStep === steps.length-1 && <Button primary disabled={!checkFormCompletion(steps[activeStep].name, steps[activeStep].completion)} onClick={() => setConfirmModalOpen(true)}>Finish</Button>}
                         </Flex>
                     </Flex>
                 </Flex>
-            </Section>
+            </Section>}
+            {confirmationVisible && <ConfirmationPage data={data} />}
         </>
     );
 };

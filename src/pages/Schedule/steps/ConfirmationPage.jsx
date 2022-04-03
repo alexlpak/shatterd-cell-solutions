@@ -8,12 +8,8 @@ import { useEffect } from 'react';
 import { Button } from '../../../components/Button.styled';
 import { RouterLink } from '../../../components/RouterLink.styled';
 
-const ConfirmationPage = (props) => {
+const ConfirmationPage = ({ data }) => {
     const theme = useTheme();
-
-    useEffect(() => {
-        console.log(props.location);
-    }, [])
 
     return (
         <Section>
@@ -21,8 +17,8 @@ const ConfirmationPage = (props) => {
                 <Heading color={theme.colors.primary.main}>See you soon!</Heading>
                 <Text>Your appointment has been confirmed!</Text>
                 <Text>A confirmation email will be sent to your provided email.</Text>
-                <RouterLink to='/'><Button primary>Navigate Home</Button></RouterLink>
-                {/* {props && <ConfirmationDetails data={props} />} */}
+                {<ConfirmationDetails data={data} />}
+                <RouterLink to='/'><Button primary>Done</Button></RouterLink>
             </Flex>
         </Section>
     );

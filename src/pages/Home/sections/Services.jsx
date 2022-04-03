@@ -10,7 +10,7 @@ import ScheduleAppointmentButton from '../../../components/ScheduleAppointmentBu
 const cardData = [
     { title: 'Free Device Diagnostic', icon: 'clipboard-check' },
     { title: 'Phone Repair', icon: 'mobile-button' },
-    { title: 'Tablet Rapair', icon: 'tablet-button' },
+    { title: 'Tablet Repair', icon: 'tablet-button' },
     { title: 'Console Repair', icon: 'gamepad' },
     { title: 'Laptop Repair', icon: 'laptop' },
     { title: 'Sell Your Broken Device', icon: 'money-bill-wave' }
@@ -28,13 +28,16 @@ const Services = () => {
             <Flex flexDirection='column' alignItems='center' justifyContent='center' gap='1rem'>
                 <Heading>{sectionData.title}</Heading>
                 <Text>{sectionData.description}</Text>
-                <Grid gap='1rem' gridTemplateColumns='repeat(3, 10rem)' gridTemplateRows='repeat(2, 10rem)'>
+                <Flex flexWrap='wrap' alignItems='center' justifyContent='center'>
                     {cardData.map(card => {
                         return (
                             <IconCard
                                 key={card.title}
                                 iconColor={theme.colors.primary.main}
+                                margin='.5rem'
                                 size='2x'
+                                height='10rem'
+                                width='10rem'
                                 icon={card.icon}
                                 label={card.title}
                                 border={`2px solid ${theme.colors.primary.main}`}
@@ -43,7 +46,7 @@ const Services = () => {
                             />
                         );
                     })}
-                </Grid>
+                </Flex>
                 <ScheduleAppointmentButton />
             </Flex>
         </Section>

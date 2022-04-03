@@ -6,6 +6,7 @@ import ContactUs from './sections/Contact/Contact';
 import Banner from './sections/Banner';
 
 const Home = () => {
+
     return (
         <>
             <Banner />

@@ -41,7 +41,7 @@ const Modal = ({ title, message, onCancel, onSubmit, children }) => {
                 {message && <Text>{message}</Text>}
                 {children}
                 <Flex gap='1rem'>
-                    <Button onClick={() => onCancel && onCancel()}>Cancel</Button>
+                    <Button secondary onClick={() => onCancel && onCancel()}>Cancel</Button>
                     <Button onClick={() => onSubmit && onSubmit()} primary>Submit</Button>
                 </Flex>
             </ModalCard>

@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { css } from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const Flex = styled.div`
+export const Flex = styled(motion.div)`
     display: flex;
     flex-direction: ${props => props.flexDirection || 'row'};
     flex-grow: ${props => props.flexGrow || '0'};

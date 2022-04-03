@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const Text = styled.p`
+export const Text = styled(motion.p)`
     color: ${props => props.color || 'inherit'};
     line-height: ${props => props.lineHeight};
     font-weight: ${props => props.fontWeight};

@@ -13,6 +13,9 @@ const IconCard = (props) => {
             justifyContent={props.justifyContent}
             alignItems={props.alignItems}
             onClick={props.onClick}
+            margin={props.margin}
+            height={props.height}
+            width={props.width}
         >
             <FontAwesomeIcon icon={['fas', props.icon]} size={props.size} color={props.iconColor} />
             <Text fontWeight={600} textAlign='center'>{props.label}</Text>

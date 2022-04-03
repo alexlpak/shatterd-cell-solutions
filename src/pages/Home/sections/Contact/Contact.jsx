@@ -4,10 +4,10 @@ import { Text } from '../../../../components/Text.styled';
 import { Button } from '../../../../components/Button.styled';
 import { Flex } from '../../../../components/Flex.styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faLocationDot, faPhone, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faLocationDot, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { useTheme } from 'styled-components';
-import ContactMap from './ContactMap';
 import { Link } from '../../../../components/Link.styled';
+import GoogleMap from '../../../../components/GoogleMap';
 
 const data = {
     title: 'Contact Us',
@@ -38,16 +38,18 @@ const ContactUs = () => {
                             <FontAwesomeIcon icon={faClock} size='2x' color={theme.colors.primary.main} />
                             <Text whiteSpace='break-spaces'>{data.hours}</Text>
                         </Flex>
-                        <Link href='mailto:abc@example.com?subject=ContactUs&body=Message'><Button primary>Send a Message</Button></Link>
+                        <Link href='mailto:alex@apak.design?subject=Contact Us'>
+                            <Flex as={Button} alignItems='center' gap='.5rem' primary>
+                                <Text>Send a Message</Text>
+                                <FontAwesomeIcon icon={faEnvelope} />
+                            </Flex>
+                        </Link>
                     </Flex>
-                    <Flex flexDirection='column' alignItems='center' gap='1rem'>
-                        <ContactMap />
-                        <Button primary>Get Directions</Button>
-                    </Flex>
+                    <GoogleMap address='100 North Broadway #160 Edmond, Oklahoma 73034' />
                 </Flex>
             </Flex>
         </Section>
-    )
+    );
 };
 
 export default ContactUs;

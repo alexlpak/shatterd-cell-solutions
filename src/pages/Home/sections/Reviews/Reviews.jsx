@@ -29,8 +29,8 @@ const Reviews = () => {
             <Flex flexDirection='column' alignItems='center' gap='1rem'>
                 <Heading color={theme.colors.primary.main}>{sectionData.title}</Heading>
                 <Text>{sectionData.description}</Text>
-                <Flex gap='1rem' childMaxWidth='15rem'>
-                    {reviews.map((review, index) => <ReviewCard key={review.body+index} {...review} />)}
+                <Flex alignItems='center' justifyContent='center'>
+                    {reviews.map((review, index) => <ReviewCard margin='.5rem' key={review.body+index} {...review} />)}
                 </Flex>
                 <ScheduleAppointmentButton />
             </Flex>

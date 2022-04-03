@@ -3,7 +3,7 @@ import PhoneImg from '../../../../../assets/images/phone.png';
 
 const HeroPhoneImage = () => {
     return (
-        <Image src={PhoneImg} height='20rem' />
+        <Image drag src={PhoneImg} height='20rem' />
     );
 };
 

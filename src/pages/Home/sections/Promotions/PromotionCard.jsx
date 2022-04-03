@@ -15,7 +15,7 @@ const PromotionCard = (props) => {
     const theme = useTheme();
     
     return (
-        <Card alignItems='center' padding='2rem' backgroundColor='white'>
+        <Card margin={props.margin} width='20rem' alignItems='center' padding='2rem' backgroundColor='white'>
             <Flex gap='1rem' alignItems='center' justifyContent='center'>
                 <FontAwesomeIcon icon={['fas', props.icon]} size='2x' color={props.iconColor} />
                 <SubHeading color={theme.colors.primary.main}>{props.title}</SubHeading>

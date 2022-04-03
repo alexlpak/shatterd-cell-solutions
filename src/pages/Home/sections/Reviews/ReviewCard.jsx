@@ -10,7 +10,7 @@ const ReviewCard = (props) => {
     const theme = useTheme();
 
     return (
-        <Card padding='2rem' border={`2px solid ${theme.colors.lightGray.main}`}>
+        <Card width='15rem' margin={props.margin} padding='2rem' border={`2px solid ${theme.colors.lightGray.main}`}>
             <Flex gap='1rem' alignItems='center' width='100%'>
                 <ProfileImage size='4rem' src={props.imgSrc || null} />
                 <Flex flexDirection='column'>
