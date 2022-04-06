@@ -7,7 +7,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import useLocalStorage from '../hooks/useLocalStorage';
 
 const InputWrapper = styled(Flex).attrs({
-    alignItems: 'stretch'
+    $alignItems: 'stretch'
 })`
     position: relative;
     border: ${({ $border, theme }) => $border || `2px solid ${theme.colors.primary.main}`};
@@ -27,8 +27,8 @@ const Placeholder = styled.label`
 `;
 
 const ClearInputButton = styled(Flex).attrs({
-    justifyContent: 'center',
-    alignItems: 'center'
+    $justifyContent: 'center',
+    $alignItems: 'center'
 })`
     width: 0rem;
     overflow: hidden;

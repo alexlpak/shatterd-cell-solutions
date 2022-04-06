@@ -48,7 +48,7 @@ const CalendarDays = ({ year, month, selectedDate, setSelectedDate }) => {
                 return element;
             }
             else {
-                return <CircleButton noHover backgroundColor='white' key={index} />;
+                return <CircleButton $noHover $backgroundColor='white' key={index} />;
             };
         })
     };

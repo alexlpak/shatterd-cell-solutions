@@ -75,7 +75,7 @@ export const CircleButton = styled(Button)`
 const StepButton = ({ complete, children, label, active }) => {
     return (
         <Flex $flexDirection='column' $gap='1rem' $alignItems='center'>
-            <CircleButton noHover size='3rem' secondary  primary={active} $complete={complete}>
+            <CircleButton $noHover $size='3rem' $secondary  $primary={active} $complete={complete}>
                 {complete ? <FontAwesomeIcon icon={faCheck} size='1x' /> : children}
             </CircleButton>
             <Text $fontWeight={600}>{label}</Text>

@@ -14,11 +14,11 @@ const CalendarTitleNav = ({ increment, decrement, month, year }) => {
             $alignItems='center'
             $width='100%'
         >
-            <CircleButton size='3rem' backgroundColor='white' onClick={decrement}>
+            <CircleButton $size='3rem' $backgroundColor='white' onClick={decrement}>
                 <FontAwesomeIcon icon={faAngleLeft} />
             </CircleButton>
             <Text $fontWeight={600} $textAlign='center'>{MONTHS[month]} {year}</Text>
-            <CircleButton size='3rem' backgroundColor='white' onClick={increment}>
+            <CircleButton $size='3rem' $backgroundColor='white' onClick={increment}>
                 <FontAwesomeIcon icon={faAngleRight} />
             </CircleButton>
         </Flex>

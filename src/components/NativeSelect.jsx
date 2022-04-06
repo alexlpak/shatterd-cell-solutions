@@ -7,7 +7,7 @@ import useLocalStorage from '../hooks/useLocalStorage';
 import { css } from 'styled-components';
 
 const SelectWrapper = styled(Flex).attrs({
-    alignItems: 'stretch'
+    $alignItems: 'stretch'
 })`
     position: relative;
     border: ${({ $border, theme }) => $border || `2px solid ${theme.colors.primary.main}`};
@@ -87,7 +87,7 @@ const NativeSelect = ({ name, label, onChange, options }) => {
                 <option value=''></option>
                 {options.map(option => <option key={option} value={option}>{option}</option>)}
             </SelectStyled>
-            <Placeholder lifted={!!value}>{label}</Placeholder>
+            <Placeholder $lifted={!!value}>{label}</Placeholder>
             <SelectIconButton>
                 <FontAwesomeIcon icon={faAngleDown} />
             </SelectIconButton>

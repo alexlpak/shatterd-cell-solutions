@@ -8,8 +8,8 @@ const DaysOfTheWeek = () => {
             return (
                 <CircleButton
                     key={day}
-                    backgroundColor='white'
-                    noHover
+                    $backgroundColor='white'
+                    $noHover
                 >
                     {day[0].toUpperCase()}
                 </CircleButton>

@@ -20,10 +20,10 @@ const ModalBackground = styled.div`
 `;
 
 const ModalCard = styled(Flex).attrs({
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: '1rem'
+    $flexDirection: 'column',
+    $justifyContent: 'center',
+    $alignItems: 'center',
+    $gap: '1rem'
 })`
     padding: 2rem;
     z-index: 1000;
