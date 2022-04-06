@@ -4,7 +4,7 @@ import { RouterLink } from './RouterLink.styled';
 const ScheduleAppointmentButton = () => {
     return (
         <RouterLink to='/schedule'>
-            <Button primary>Schedule Appointment</Button>
+            <Button $primary>Schedule Appointment</Button>
         </RouterLink>
     );
 };

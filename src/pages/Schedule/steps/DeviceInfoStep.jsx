@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import Input from '../../../components/Input';
-import Select from '../../../components/Select';
 import NativeSelect from '../../../components/NativeSelect';
 
 const DeviceInfoStep = ({ name, onChange }) => {

@@ -13,12 +13,12 @@ const ConfirmationPage = ({ data }) => {
 
     return (
         <Section>
-            <Flex flexDirection='column' alignItems='flex-start' gap='1rem'>
-                <Heading color={theme.colors.primary.main}>See you soon!</Heading>
+            <Flex $flexDirection='column' $alignItems='flex-start' $gap='1rem'>
+                <Heading $color={theme.colors.primary.main}>See you soon!</Heading>
                 <Text>Your appointment has been confirmed!</Text>
                 <Text>A confirmation email will be sent to your provided email.</Text>
                 {<ConfirmationDetails data={data} />}
-                <RouterLink to='/'><Button primary>Done</Button></RouterLink>
+                <RouterLink to='/'><Button $primary>Done</Button></RouterLink>
             </Flex>
         </Section>
     );

@@ -25,7 +25,7 @@ const Form = ({ name, onComplete, children }) => {
     }, [formComplete]);
 
     return (
-        <Flex as='form' flexDirection='column' gap='1rem' width='100%'>
+        <Flex as='form' $flexDirection='column' $gap='1rem' $width='100%'>
             {Children.toArray(children).map(child => {
                 const newElement = React.cloneElement(child, { updateData: updateData });
                 return newElement;

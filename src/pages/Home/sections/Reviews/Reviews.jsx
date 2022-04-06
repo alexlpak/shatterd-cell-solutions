@@ -26,10 +26,10 @@ const Reviews = () => {
     const theme = useTheme();
     return (
         <Section id='reviews'>
-            <Flex flexDirection='column' alignItems='center' gap='1rem'>
-                <Heading color={theme.colors.primary.main}>{sectionData.title}</Heading>
+            <Flex $flexDirection='column' $alignItems='center' $gap='1rem'>
+                <Heading $color={theme.colors.primary.main}>{sectionData.title}</Heading>
                 <Text>{sectionData.description}</Text>
-                <Flex alignItems='center' justifyContent='center'>
+                <Flex $alignItems='center' $justifyContent='center'>
                     {reviews.map((review, index) => <ReviewCard margin='.5rem' key={review.body+index} {...review} />)}
                 </Flex>
                 <ScheduleAppointmentButton />

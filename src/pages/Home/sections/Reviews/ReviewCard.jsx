@@ -10,16 +10,16 @@ const ReviewCard = (props) => {
     const theme = useTheme();
 
     return (
-        <Card width='15rem' margin={props.margin} padding='2rem' border={`2px solid ${theme.colors.lightGray.main}`}>
-            <Flex gap='1rem' alignItems='center' width='100%'>
-                <ProfileImage size='4rem' src={props.imgSrc || null} />
-                <Flex flexDirection='column'>
-                    <Text fontWeight={600}>{props.name}</Text>
+        <Card $width='15rem' $margin={props.margin} $padding='2rem' $border={`2px solid ${theme.colors.lightGray.main}`}>
+            <Flex $gap='1rem' $alignItems='center' $width='100%'>
+                <ProfileImage $size='4rem' src={props.imgSrc || null} />
+                <Flex $flexDirection='column'>
+                    <Text $fontWeight={600}>{props.name}</Text>
                     <Text>{props.date}</Text>
                 </Flex>
             </Flex>
-            <Flex flexDirection='column' gap='1rem'>
-                <Text fontWeight={600}>{props.title}</Text>
+            <Flex $flexDirection='column' $gap='1rem'>
+                <Text $fontWeight={600}>{props.title}</Text>
                 <Text>{props.body}</Text>
             </Flex>
             <Flex>

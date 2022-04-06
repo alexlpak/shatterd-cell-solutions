@@ -9,15 +9,15 @@ const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
 const CalendarTitleNav = ({ increment, decrement, month, year }) => {
     return (
         <Flex
-            gap='1rem'
-            justifyContent='space-between'
-            alignItems='center'
-            width='100%'
+            $gap='1rem'
+            $justifyContent='space-between'
+            $alignItems='center'
+            $width='100%'
         >
             <CircleButton size='3rem' backgroundColor='white' onClick={decrement}>
                 <FontAwesomeIcon icon={faAngleLeft} />
             </CircleButton>
-            <Text fontWeight={600} textAlign='center'>{MONTHS[month]} {year}</Text>
+            <Text $fontWeight={600} $textAlign='center'>{MONTHS[month]} {year}</Text>
             <CircleButton size='3rem' backgroundColor='white' onClick={increment}>
                 <FontAwesomeIcon icon={faAngleRight} />
             </CircleButton>

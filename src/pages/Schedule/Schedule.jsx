@@ -119,10 +119,10 @@ const Schedule = () => {
                 </Modal>
             )}
             {!confirmationVisible && <Section>
-                <Flex flexDirection='column' alignItems='center' gap='1rem'>
-                    <Heading color={theme.colors.primary.main} textAlign='center'>Schedule Appointment</Heading>
-                    <Flex gap='1rem' flexDirection='column' alignItems='center'>
-                        <Flex gap='2em'>
+                <Flex $flexDirection='column' $alignItems='center' $gap='1rem'>
+                    <Heading $color={theme.colors.primary.main} $textAlign='center'>Schedule Appointment</Heading>
+                    <Flex $gap='1rem' $flexDirection='column' $alignItems='center'>
+                        <Flex $gap='2em'>
                             {steps.map((step, index) => {
                                 return (
                                     <StepButton
@@ -136,13 +136,13 @@ const Schedule = () => {
                                 );
                             })}
                         </Flex>
-                        <Text fontWeight={600}>{steps[activeStep].instructions}</Text>
+                        <Text $fontWeight={600}>{steps[activeStep].instructions}</Text>
                         {steps[activeStep].view}
-                        <Flex gap='1rem'>
-                            {activeStep === 0 && <RouterLink to='/'><Button secondary>Cancel</Button></RouterLink>}
-                            {activeStep > 0 && <Button secondary onClick={decrementStep}>Back</Button>}
-                            {activeStep >= 0 && activeStep < steps.length-1 && <Button primary disabled={!checkFormCompletion(steps[activeStep].name, steps[activeStep].completion)} onClick={incrementStep}>Next</Button>}
-                            {activeStep === steps.length-1 && <Button primary disabled={!checkFormCompletion(steps[activeStep].name, steps[activeStep].completion)} onClick={() => setConfirmModalOpen(true)}>Finish</Button>}
+                        <Flex $gap='1rem'>
+                            {activeStep === 0 && <RouterLink to='/'><Button $secondary>Cancel</Button></RouterLink>}
+                            {activeStep > 0 && <Button $secondary onClick={decrementStep}>Back</Button>}
+                            {activeStep >= 0 && activeStep < steps.length-1 && <Button $primary disabled={!checkFormCompletion(steps[activeStep].name, steps[activeStep].completion)} onClick={incrementStep}>Next</Button>}
+                            {activeStep === steps.length-1 && <Button $primary disabled={!checkFormCompletion(steps[activeStep].name, steps[activeStep].completion)} onClick={() => setConfirmModalOpen(true)}>Finish</Button>}
                         </Flex>
                     </Flex>
                 </Flex>

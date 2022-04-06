@@ -7,21 +7,21 @@ import { motion } from 'framer-motion';
 
 export const Button = styled(motion.button)`
     border: none;
-    ${props => {
-        if (props.primary) {
-            const { main, hover, active, disabled } = props.theme.colors.primary;
+    ${({ $primary, $secondary, $noHover, theme }) => {
+        if ($primary) {
+            const { main, hover, active, disabled } = theme.colors.primary;
             return css`
                 background-color: ${main};
                 color: white;
-                &:hover { background-color: ${props.noHover ? null : hover} };
+                &:hover { background-color: ${$noHover ? null : hover} };
                 &:active { background-color: ${active} };
                 &:disabled { background-color: ${disabled} };
             `;
         }
-        else if (props.secondary) {
-            const { main, hover, active, disabled } = props.theme.colors.lightGray;
+        else if ($secondary) {
+            const { main, hover, active, disabled } = theme.colors.lightGray;
             return css`
-                border: 2px solid ${props.theme.colors.primary.main};
+                border: 2px solid ${theme.colors.primary.main};
                 background-color: white;
                 color: black;
                 &:hover { background-color: ${hover} };
@@ -30,13 +30,22 @@ export const Button = styled(motion.button)`
             `;
         };
     }};
-    background-color: ${props => props.backgroundColor};
+    background-color: ${({ $backgroundColor }) => $backgroundColor};
     border-radius: .5rem;
     font-weight: 600;
     padding: .5rem 1rem;
     transition: all 150ms ease;
+    ${({ $flex, $flexDirection, $gap, $centered }) => {
+        if ($flex) return css`
+            display: flex;
+            gap: ${$gap};
+            flex-direction: ${$flexDirection};
+            justify-content: ${$centered && 'center'};
+            align-items: ${$centered && 'center'};
+        `;
+    }}
     &:hover {
-        cursor: ${props => props.noHover ? 'default' : 'pointer'};
+        cursor: ${({ $noHover }) => $noHover ? 'default' : 'pointer'};
     };
     &:disabled {
         &:hover {
@@ -48,28 +57,28 @@ export const Button = styled(motion.button)`
 export const CircleButton = styled(Button)`
     position: relative;
     border-radius: 50%;
-    ${props => {
-        return props.complete && css`
+    ${({ $complete, theme }) => {
+        return $complete && css`
             border: none;
-            background-color: ${props.theme.colors.status.success};
+            background-color: ${theme.colors.status.success};
             color: white;
         `;
     }};
-    ${props => {
-        return props.size && css`
-            height: ${props.size};
-            width: ${props.size};
+    ${({ $size }) => {
+        return $size && css`
+            height: ${$size};
+            width: ${$size};
         `;
     }};
 `;
 
 const StepButton = ({ complete, children, label, active }) => {
     return (
-        <Flex flexDirection='column' gap='1rem' alignItems='center'>
-            <CircleButton noHover size='3rem' secondary  primary={active} complete={complete}>
+        <Flex $flexDirection='column' $gap='1rem' $alignItems='center'>
+            <CircleButton noHover size='3rem' secondary  primary={active} $complete={complete}>
                 {complete ? <FontAwesomeIcon icon={faCheck} size='1x' /> : children}
             </CircleButton>
-            <Text fontWeight={600}>{label}</Text>
+            <Text $fontWeight={600}>{label}</Text>
         </Flex>
     );
 };

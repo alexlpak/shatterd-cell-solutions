@@ -32,7 +32,7 @@ const IconCardSelect = (props) => {
 
     return (
         <IconCardStyled
-            border={`2px solid ${selected ? theme.colors.primary.main : theme.colors.lightGray.main}`}
+            $border={`2px solid ${selected ? theme.colors.primary.main : theme.colors.lightGray.main}`}
             onClick={handleClick}
 			style={{ transition: 'all 150ms ease' }}
         >
@@ -42,9 +42,9 @@ const IconCardSelect = (props) => {
 				color={selected ? theme.colors.primary.main : theme.colors.gray.main}
 				style={{ transition: 'all 150ms ease' }}
 			/>
-			<Flex flexDirection='column' gap='.25rem'>
-				<Text fontWeight={600} textAlign='center'>{props.label}</Text>
-				<Text fontSize='.75rem' textAlign='center' whiteSpace='break-spaces'>Est. Service Time:<br />{props.timeEstimate || 'N/A'}</Text>
+			<Flex $flexDirection='column' $gap='.25rem'>
+				<Text $fontWeight={600} $textAlign='center'>{props.label}</Text>
+				<Text $fontSize='.75rem' $textAlign='center' $whiteSpace='break-spaces'>Est. Service Time:<br />{props.timeEstimate || 'N/A'}</Text>
 			</Flex>
         </IconCardStyled>
 	);

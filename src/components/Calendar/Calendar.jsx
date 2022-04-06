@@ -33,7 +33,7 @@ const Calendar = ({ onChange }) => {
     };
     
     return (
-        <Flex flexDirection='column' gap='1rem' alignItems='center' justifyContent='center'>
+        <Flex $flexDirection='column' $gap='1rem' $alignItems='center' $justifyContent='center'>
             <CalendarTitleNav
                 increment={incrementMonth}
                 decrement={decrementMonth}

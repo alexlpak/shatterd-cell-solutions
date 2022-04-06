@@ -37,12 +37,12 @@ const Modal = ({ title, message, onCancel, onSubmit, children }) => {
     return (
         <ModalBackground>
             <ModalCard>
-                <Text fontWeight={600} fontSize='1.5rem' color={theme.colors.primary.main}>{title}</Text>
+                <Text $fontWeight={600} $fontSize='1.5rem' $color={theme.colors.primary.main}>{title}</Text>
                 {message && <Text>{message}</Text>}
                 {children}
-                <Flex gap='1rem'>
-                    <Button secondary onClick={() => onCancel && onCancel()}>Cancel</Button>
-                    <Button onClick={() => onSubmit && onSubmit()} primary>Submit</Button>
+                <Flex $gap='1rem'>
+                    <Button $secondary onClick={() => onCancel && onCancel()}>Cancel</Button>
+                    <Button onClick={() => onSubmit && onSubmit()} $primary>Submit</Button>
                 </Flex>
             </ModalCard>
         </ModalBackground>

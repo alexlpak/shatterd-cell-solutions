@@ -24,29 +24,28 @@ const sectionData = {
 const Services = () => {
     const theme = useTheme();
     return (
-        <Section backgroundColor={theme.colors.secondary.main} color='white' id='services'>
-            <Flex flexDirection='column' alignItems='center' justifyContent='center' gap='1rem'>
+        <Section $backgroundColor={theme.colors.secondary.main} $color='white' $id='services'>
+            <Flex $flexDirection='column' $alignItems='center' $justifyContent='center' $gap='1rem'>
                 <Heading>{sectionData.title}</Heading>
                 <Text>{sectionData.description}</Text>
-                <Flex flexWrap='wrap' alignItems='center' justifyContent='center'>
+                <Grid $gap='1rem' $gridTemplateColumns='repeat(3, 10rem)'>
                     {cardData.map(card => {
                         return (
                             <IconCard
                                 key={card.title}
-                                iconColor={theme.colors.primary.main}
-                                margin='.5rem'
-                                size='2x'
-                                height='10rem'
-                                width='10rem'
-                                icon={card.icon}
-                                label={card.title}
-                                border={`2px solid ${theme.colors.primary.main}`}
-                                alignItems='center'
-                                justifyContent='center'
+                                $iconColor={theme.colors.primary.main}
+                                $size='2x'
+                                $height='10rem'
+                                $width='10rem'
+                                $icon={card.icon}
+                                $label={card.title}
+                                $border={`2px solid ${theme.colors.primary.main}`}
+                                $alignItems='center'
+                                $justifyContent='center'
                             />
                         );
                     })}
-                </Flex>
+                </Grid>
                 <ScheduleAppointmentButton />
             </Flex>
         </Section>

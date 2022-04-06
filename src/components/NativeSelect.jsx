@@ -10,8 +10,8 @@ const SelectWrapper = styled(Flex).attrs({
     alignItems: 'stretch'
 })`
     position: relative;
-    border: ${props => props.border || `2px solid ${props.theme.colors.primary.main}`};
-    width: ${props => props.width || '25rem'};
+    border: ${({ $border, theme }) => $border || `2px solid ${theme.colors.primary.main}`};
+    width: ${({ $width }) => $width || '25rem'};
     border-radius: .5rem;
 `;
 
@@ -24,9 +24,9 @@ const Placeholder = styled.label`
     transition: all 150ms ease;
     border-radius: .25rem;
     pointer-events: none;
-    ${props => props.lifted && css`
+    ${({ $lifted }) => $lifted && css`
         opacity: 1;
-        color: ${props => props.theme.colors.primary.main};
+        color: ${({ theme }) => theme.colors.primary.main};
         top: calc(-.5rem - 2px);
         background-color: white;
         padding: 0rem 0.5rem;
@@ -34,8 +34,8 @@ const Placeholder = styled.label`
 `;
 
 const SelectIconButton = styled(Flex).attrs({
-    justifyContent: 'center',
-    alignItems: 'center'
+    $justifyContent: 'center',
+    $alignItems: 'center'
 })`
     pointer-events: none;
     position: absolute;

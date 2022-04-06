@@ -26,13 +26,13 @@ const TimeSlots = ({timeSlots=['11:30 AM','12:00 PM','1:30 PM'], date, onChange,
     }, [selectedTime]);
 
     return (
-        <Flex flexDirection='column' gap='1rem'>
-        <Flex flexDirection='column' gap='1rem'>
-            <Text fontWeight={600} textAlign='center'>Available Time Slots</Text>
-            <Text textAlign='center'>{new Date(date).toDateString()}</Text>
+        <Flex $flexDirection='column' $gap='1rem'>
+        <Flex $flexDirection='column' $gap='1rem'>
+            <Text $fontWeight={600} $textAlign='center'>Available Time Slots</Text>
+            <Text $textAlign='center'>{new Date(date).toDateString()}</Text>
         </Flex>
-            <Flex alignItems='center' gap='1rem'>
-                {timeSlots.map(time => <Button primary={selectedDate === date && time === selectedTime} key={time} value={time} onClick={handleClick}>{time}</Button>)}
+            <Flex $alignItems='center' $gap='1rem'>
+                {timeSlots.map(time => <Button $primary={selectedDate === date && time === selectedTime} key={time} value={time} onClick={handleClick}>{time}</Button>)}
             </Flex>
         </Flex>
     );

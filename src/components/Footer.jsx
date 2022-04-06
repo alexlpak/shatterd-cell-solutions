@@ -13,14 +13,14 @@ const Footer = () => {
     
     return (
         <Section
-        as='footer'
-        padding='4rem'
-        backgroundColor={theme.colors.primary.main}
-        color='white'
+            as='footer'
+            $padding='4rem'
+            $backgroundColor={theme.colors.primary.main}
+            $color='white'
         >
-            <Flex alignItems='center' justifyContent='space-between' width='100%'>
-                <Text maxWidth='unset'>Copyright © 2022 Shatter'd Cell Solutions - All Rights Reserved.</Text>
-                <Flex gap='1rem'>
+            <Flex $alignItems='center' $justifyContent='space-between' $width='100%'>
+                <Text>Copyright © 2022 Shatter'd Cell Solutions - All Rights Reserved.</Text>
+                <Flex $gap='1rem'>
                     <Link href='https://www.facebook.com/shatterdcell/' target='_blank'>
                         <FontAwesomeIcon icon={faFacebookSquare} size='2x' />
                     </Link>

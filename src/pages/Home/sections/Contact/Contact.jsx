@@ -4,48 +4,86 @@ import { Text } from '../../../../components/Text.styled';
 import { Button } from '../../../../components/Button.styled';
 import { Flex } from '../../../../components/Flex.styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faLocationDot, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faLocationDot, faPhone, faEnvelope, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { useTheme } from 'styled-components';
 import { Link } from '../../../../components/Link.styled';
 import GoogleMap from '../../../../components/GoogleMap';
+import Map from '../../../../components/GoogleMapReact';
+import { useEffect, useState } from 'react';
+import { capitalizeWord } from '../../../../helper/string';
+import styled from 'styled-components';
 
 const data = {
     title: 'Contact Us',
     body: 'Have questions about your device?\nFeel free to come by and get a free estimate!',
     address: '100 North Broadway #160\nEdmond, Oklahoma 73034',
     phone: '(405) 562-3140',
-    hours: 'Open today 10 AM - 7 PM'
-}
+    hours: {
+        sun: '12:00 PM - 4:00 PM',
+        mon: '10:00 AM - 7:00 PM',
+        tue: '10:00 AM - 7:00 PM',
+        wed: '10:00 AM - 7:00 PM',
+        thu: '10:00 AM - 7:00 PM',
+        fri: '10:00 AM - 7:00 PM',
+        sat: '10:00 AM - 3:00 PM',
+    }
+};
+
+const ContactItem = ({ icon, text, children }) => {
+    const theme = useTheme();
+    return (
+        <Flex $gap='1rem' $alignItems='center' $justifyContent='center'>
+            <FontAwesomeIcon icon={icon} size='2x' color={theme.colors.primary.main} />
+            {children ? children : <Text $whiteSpace='break-spaces'>{text}</Text>}
+        </Flex>
+    );
+};
+
+const HoverContactItem = styled(ContactItem)`
+    background: orange;
+    &:hover {
+        cursor: pointer;
+    };
+`;
+
+const Hours = () => {
+    const [hoursVisible, setHoursVisible] = useState(false);
+    const { hours } = data;
+    return (
+        <HoverContactItem icon={faClock}>
+            <Flex $flexDirection='column' $gap='.5rem' onClick={() => setHoursVisible(prevVal => !prevVal)}>
+                {hoursVisible ?
+                    Object.keys(hours).map(day => <Text key={day}>{capitalizeWord(day)} {hours[day]}</Text>) :
+                    <Text>Open today {hours[Object.keys(hours)[new Date().getDay()]]}</Text>
+                }
+            </Flex>
+            <FontAwesomeIcon icon={faAngleDown} />
+        </HoverContactItem>
+    );
+};
 
 const ContactUs = () => {
     const theme = useTheme();
+
     return (
-        <Section backgroundColor={theme.colors.secondary.main} color='white' id='contact'>
-            <Flex gap='1rem' flexDirection='column' alignItems='center'>
-                <Heading textAlign='center'>{data.title}</Heading>
-                <Text textAlign='center' whiteSpace='break-spaces'>{data.body}</Text>
-                <Flex gap='1rem'>
-                    <Flex gap='1rem' alignItems='flex-start' flexDirection='column'>
-                        <Flex gap='1rem' alignItems='center' justifyContent='center'>
-                            <FontAwesomeIcon icon={faLocationDot} size='2x' color={theme.colors.primary.main} />
-                            <Text whiteSpace='break-spaces'>{data.address}</Text>
-                        </Flex>
-                        <Flex gap='1rem' alignItems='center' justifyContent='center'>
-                            <FontAwesomeIcon icon={faPhone} size='2x' color={theme.colors.primary.main} />
-                            <Text whiteSpace='break-spaces'>{data.phone}</Text>
-                        </Flex>
-                        <Flex gap='1rem' alignItems='center' justifyContent='center'>
-                            <FontAwesomeIcon icon={faClock} size='2x' color={theme.colors.primary.main} />
-                            <Text whiteSpace='break-spaces'>{data.hours}</Text>
-                        </Flex>
+        <Section $backgroundColor={theme.colors.secondary.main} $color='white' id='contact'>
+            <Flex $gap='1rem' $flexDirection='column' $alignItems='center'>
+                <Heading $textAlign='center'>{data.title}</Heading>
+                <Text $textAlign='center' $whiteSpace='break-spaces'>{data.body}</Text>
+                <Flex $gap='1rem'>
+                    <Flex $gap='1rem' $alignItems='flex-start' $flexDirection='column'>
+                        <ContactItem icon={faLocationDot} text={data.address} />
+                        <ContactItem icon={faPhone} text={data.phone} />
+                        <Hours />
                         <Link href='mailto:alex@apak.design?subject=Contact Us'>
-                            <Flex as={Button} alignItems='center' gap='.5rem' primary>
+                            <Button $flex $gap='.5rem' $primary $centered>
                                 <Text>Send a Message</Text>
                                 <FontAwesomeIcon icon={faEnvelope} />
-                            </Flex>
+                            </Button>
                         </Link>
                     </Flex>
                     <GoogleMap address='100 North Broadway #160 Edmond, Oklahoma 73034' />
+                    {/* <Map /> */}
                 </Flex>
             </Flex>
         </Section>

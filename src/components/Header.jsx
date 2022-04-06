@@ -29,18 +29,18 @@ const Header = () => {
 
     return (
         <HeaderStyled as='header'>
-            <Flex alignItems='center' justifyContent='space-between' width='100%'>
+            <Flex $alignItems='center' $justifyContent='space-between' $width='100%'>
                 <RouterLink to='/'>
-                    <Image src={CompanyLogo} height='3rem' />
+                    <Image src={CompanyLogo} $height='3rem' />
                 </RouterLink>
-                <Flex gap='2rem'>
-                    <RouterLink to='/'><Text fontWeight={500}>Home</Text></RouterLink>
+                <Flex $gap='2rem'>
+                    <RouterLink to='/'><Text $fontWeight={500}>Home</Text></RouterLink>
                     {!isScheduleLocation &&
                         <>
-                            <Link onClick={() => smoothScrollToElement('#services')}><Text fontWeight={500}>Services</Text></Link>
-                            <Link onClick={() => smoothScrollToElement('#reviews')}><Text fontWeight={500}>Reviews</Text></Link>
-                            <Link onClick={() => smoothScrollToElement('#promotions')}><Text fontWeight={500}>Sell</Text></Link>
-                            <Link onClick={() => smoothScrollToElement('#contact')}><Text fontWeight={500}>Contact</Text></Link>
+                            <Link onClick={() => smoothScrollToElement('#services')}><Text $fontWeight={500}>Services</Text></Link>
+                            <Link onClick={() => smoothScrollToElement('#reviews')}><Text $fontWeight={500}>Reviews</Text></Link>
+                            <Link onClick={() => smoothScrollToElement('#promotions')}><Text $fontWeight={500}>Sell</Text></Link>
+                            <Link onClick={() => smoothScrollToElement('#contact')}><Text $fontWeight={500}>Contact</Text></Link>
                         </>
                     }
                 </Flex>

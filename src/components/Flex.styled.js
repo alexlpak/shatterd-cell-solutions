@@ -4,32 +4,22 @@ import { motion } from 'framer-motion';
 
 export const Flex = styled(motion.div)`
     display: flex;
-    flex-direction: ${props => props.flexDirection || 'row'};
-    flex-grow: ${props => props.flexGrow || '0'};
-    flex-basis: ${props => props.flexBasis || 'auto'};
-    flex-shrink: ${props => props.flexShrink || '1'};
-    flex-wrap: ${props => props.flexWrap || 'nowrap'};
-    flex: ${props => props.flex || '0 1 auto'};
-    align-items: ${props => props.alignItems || 'stretch'};
-    justify-content: ${props => props.justifyContent || 'flex-start'};
-    margin: ${props => props.margin || '0'};
-    padding: ${props => props.padding || '0'};
-    width: ${props => props.width || 'auto'};
-    height: ${props => props.height || 'auto'};
-    max-width: ${props => props.maxWidth || 'none'};
+    flex-direction: ${({ $flexDirection }) => $flexDirection || 'row'};
+    flex-grow: ${({ $flexGrow }) => $flexGrow || '0'};
+    flex-basis: ${({ $flexBasis }) => $flexBasis || 'auto'};
+    flex-shrink: ${({ $flexShrink }) => $flexShrink || '1'};
+    flex-wrap: ${({ $flexWrap }) => $flexWrap || 'nowrap'};
+    flex: ${({ $flex }) => $flex || '0 1 auto'};
+    align-items: ${({ $alignItems }) => $alignItems || 'stretch'};
+    justify-content: ${({ $justifyContent }) => $justifyContent || 'flex-start'};
+    margin: ${({ $margin }) => $margin || '0'};
+    padding: ${({ $padding }) => $padding || '0'};
+    width: ${({ $width }) => $width || 'auto'};
+    height: ${({ $height }) => $height || 'auto'};
+    max-width: ${({ $maxWidth }) => $maxWidth || 'none'};
+    gap: ${({ $gap }) => $gap};
     & > * {
-        max-height: ${props => props.childMaxHeight};
-        max-width: ${props => props.childMaxWidth};
-    };
-    & > *:not(:last-child) {
-        ${props => {
-            if (props.gap) {
-                switch (props.flexDirection) {
-                    case 'column': return css`margin-bottom: ${props.gap};`;
-                    case 'row': return css`margin-right: ${props.gap};`;
-                    default: return css`margin-right: ${props.gap};`;
-                };
-            };
-        }}
+        max-height: ${({ $childMaxHeight }) => $childMaxHeight};
+        max-width: ${({ $childMaxWidth }) => $childMaxWidth};
     };
 `;

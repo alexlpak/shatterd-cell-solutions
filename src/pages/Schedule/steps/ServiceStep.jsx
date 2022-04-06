@@ -50,8 +50,8 @@ const ServiceStep = ({ name, onChange }) => {
 
     return (
         <Grid
-            gap='1rem'
-            gridTemplateColumns='repeat(3, 10rem)'
+            $gap='1rem'
+            $gridTemplateColumns='repeat(3, 10rem)'
         >
             {serviceData.services.map(service => {
                 return (

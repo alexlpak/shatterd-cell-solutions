@@ -11,16 +11,16 @@ import ScheduleAppointmentButton from '../../../../components/ScheduleAppointmen
 
 library.add(fas);
 
-const PromotionCard = (props) => {
+const PromotionCard = ({ margin, icon, iconColor, title, text}) => {
     const theme = useTheme();
     
     return (
-        <Card margin={props.margin} width='20rem' alignItems='center' padding='2rem' backgroundColor='white'>
-            <Flex gap='1rem' alignItems='center' justifyContent='center'>
-                <FontAwesomeIcon icon={['fas', props.icon]} size='2x' color={props.iconColor} />
-                <SubHeading color={theme.colors.primary.main}>{props.title}</SubHeading>
+        <Card $margin={margin} $width='20rem' $alignItems='center' $padding='2rem' $backgroundColor='white'>
+            <Flex $gap='1rem' $alignItems='center' $justifyContent='center'>
+                <FontAwesomeIcon icon={['fas', icon]} size='2x' color={iconColor} />
+                <SubHeading $color={theme.colors.primary.main}>{title}</SubHeading>
             </Flex>
-            <Text whiteSpace='break-spaces'>{props.text}</Text>
+            <Text $whiteSpace='break-spaces'>{text}</Text>
             <ScheduleAppointmentButton />
         </Card>
     );

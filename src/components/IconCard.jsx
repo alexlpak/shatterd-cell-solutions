@@ -6,27 +6,39 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 library.add(fas);
 
-const IconCard = (props) => {
+const IconCard = (({
+    $border,
+    $justifyContent,
+    $alignItems,
+    $margin,
+    $height,
+    $width,
+    $icon,
+    $size,
+    $iconColor,
+    $label,
+    onClick
+}) => {
     return (
         <Card
-            border={props.border}
-            justifyContent={props.justifyContent}
-            alignItems={props.alignItems}
-            onClick={props.onClick}
-            margin={props.margin}
-            height={props.height}
-            width={props.width}
+            $border={$border}
+            $justifyContent={$justifyContent}
+            $alignItems={$alignItems}
+            $margin={$margin}
+            $height={$height}
+            $width={$width}
+            onClick={onClick}
         >
-            <FontAwesomeIcon icon={['fas', props.icon]} size={props.size} color={props.iconColor} />
-            <Text fontWeight={600} textAlign='center'>{props.label}</Text>
+            <FontAwesomeIcon icon={['fas', $icon]} size={$size} color={$iconColor} />
+            <Text $fontWeight={600} $textAlign='center'>{$label}</Text>
         </Card>
     );
-};
+});
 
 IconCard.defaultProps = {
-    icon: 'star',
-    size: '1x',
-    label: 'Lorem Ipsum'
+    $icon: 'star',
+    $size: '1x',
+    $label: 'Lorem Ipsum'
 };
 
 export default IconCard;

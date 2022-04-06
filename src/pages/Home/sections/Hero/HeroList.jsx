@@ -14,10 +14,10 @@ const data = [
 const HeroList = () => {
     const theme = useTheme();
     return (
-        <Flex as='ul' flexDirection='column' gap='1rem'>
+        <Flex as='ul' $flexDirection='column' $gap='1rem'>
             {data.map(item => {
                 return (
-                    <Flex as='li' key={item} gap='.5rem' alignItems='center'>
+                    <Flex as='li' key={item} $gap='.5rem' $alignItems='center'>
                         <FontAwesomeIcon icon={faStar} color={theme.colors.primary.main} />
                         <Text>{item}</Text>
                     </Flex>

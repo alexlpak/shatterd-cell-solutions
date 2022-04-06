@@ -55,9 +55,9 @@ const CalendarDays = ({ year, month, selectedDate, setSelectedDate }) => {
 
     return (
         <Grid
-            gridTemplateColumns='repeat(7, 3rem)'
-            gridTemplateRows='repeat(7, 3rem)'
-            gap='1rem'
+            $gridTemplateColumns='repeat(7, 3rem)'
+            $gridTemplateRows='repeat(7, 3rem)'
+            $gap='1rem'
         >
         <DaysOfTheWeek />
             {getCalendarDayElements()}

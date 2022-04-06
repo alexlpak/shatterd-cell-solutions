@@ -14,15 +14,15 @@ const data = [
         title: 'Get a 10% Discount',
         text: 'Get a 10% discount on all purchases and repairs for First Responders, Military (Veterans/Active Duty), College Students, and Teachers.\n\nMust present badge or ID card for discount.'
     }
-]
+];
 
 const Promotions = () => {
     const theme = useTheme();
     return (
-        <Section backgroundColor={theme.colors.lightGray.main} id='promotions'>
-            <Flex alignItems='center' justifyContent='center' flexWrap='wrap'>
+        <Section $backgroundColor={theme.colors.lightGray.main} id='promotions'>
+            <Flex $alignItems='center' $justifyContent='center' $flexWrap='wrap' $gap='1rem'>
                 {data.map(promo => {
-                    return <PromotionCard margin='.5rem' key={promo.title} {...promo} iconColor={theme.colors.primary.main} />
+                    return <PromotionCard key={promo.title} {...promo} iconColor={theme.colors.primary.main} />
                 })}
             </Flex>
         </Section>

@@ -22,7 +22,7 @@ const ScheduleStep = ({ name, onChange }) => {
     };
 
     return (
-        <Flex gap='1rem'>
+        <Flex $gap='1rem'>
             <Calendar
                 onChange={(value) => setDate(value)}
             />

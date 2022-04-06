@@ -10,8 +10,8 @@ const InputWrapper = styled(Flex).attrs({
     alignItems: 'stretch'
 })`
     position: relative;
-    border: ${props => props.border || `2px solid ${props.theme.colors.primary.main}`};
-    width: ${props => props.width || '25rem'};
+    border: ${({ $border, theme }) => $border || `2px solid ${theme.colors.primary.main}`};
+    width: ${({ $width }) => $width || '25rem'};
     border-radius: .5rem;
 `;
 

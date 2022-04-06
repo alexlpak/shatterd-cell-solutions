@@ -1,14 +1,15 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const Section = styled.section`
+export const Section = styled(motion.section)`
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     margin: 0 auto;
-    padding: ${props => props.padding || '2rem'};
-    background-color: ${props => props.backgroundColor};
-    color: ${props => props.color};
+    padding: ${({ $padding }) => $padding || '2rem'};
+    background-color: ${({ $backgroundColor }) => $backgroundColor};
+    color: ${({ $color }) => $color};
     & > * {
         max-width: 50rem;
     };
