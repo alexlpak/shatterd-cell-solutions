@@ -8,10 +8,8 @@ import { faClock, faLocationDot, faPhone, faEnvelope, faAngleDown } from '@forta
 import { useTheme } from 'styled-components';
 import { Link } from '../../../../components/Link.styled';
 import GoogleMap from '../../../../components/GoogleMap';
-import Map from '../../../../components/GoogleMapReact';
-import { useEffect, useState } from 'react';
 import { capitalizeWord } from '../../../../helper/string';
-import styled from 'styled-components';
+import { useState } from 'react';
 
 const data = {
     title: 'Contact Us',
@@ -39,18 +37,11 @@ const ContactItem = ({ icon, text, children }) => {
     );
 };
 
-const HoverContactItem = styled(ContactItem)`
-    background: orange;
-    &:hover {
-        cursor: pointer;
-    };
-`;
-
 const Hours = () => {
     const [hoursVisible, setHoursVisible] = useState(false);
     const { hours } = data;
     return (
-        <HoverContactItem icon={faClock}>
+        <ContactItem icon={faClock}>
             <Flex $flexDirection='column' $gap='.5rem' onClick={() => setHoursVisible(prevVal => !prevVal)}>
                 {hoursVisible ?
                     Object.keys(hours).map(day => <Text key={day}>{capitalizeWord(day)} {hours[day]}</Text>) :
@@ -58,7 +49,7 @@ const Hours = () => {
                 }
             </Flex>
             <FontAwesomeIcon icon={faAngleDown} />
-        </HoverContactItem>
+        </ContactItem>
     );
 };
 
@@ -83,7 +74,6 @@ const ContactUs = () => {
                         </Link>
                     </Flex>
                     <GoogleMap address='100 North Broadway #160 Edmond, Oklahoma 73034' />
-                    {/* <Map /> */}
                 </Flex>
             </Flex>
         </Section>

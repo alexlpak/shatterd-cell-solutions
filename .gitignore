@@ -28,3 +28,6 @@ cypress.json
 
 # environment
 .env
+
+#backend
+backend

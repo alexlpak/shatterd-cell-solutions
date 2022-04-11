@@ -5,10 +5,10 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { Text } from '../../../../components/Text.styled';
 
 const data = [
-    'Screens, batteries, game consoles, and laptops',
+    'Phone, tablet, game console, and laptop repair',
+    'High-quality parts backed with warranty',
     '100% satisfaction guaratee',
     'Free estimates',
-    'High-quality parts'
 ];
 
 const HeroList = () => {

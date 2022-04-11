@@ -24,7 +24,7 @@ const sectionData = {
 const Services = () => {
     const theme = useTheme();
     return (
-        <Section $backgroundColor={theme.colors.secondary.main} $color='white' $id='services'>
+        <Section $backgroundColor={theme.colors.secondary.main} $color='white' id='services'>
             <Flex $flexDirection='column' $alignItems='center' $justifyContent='center' $gap='1rem'>
                 <Heading>{sectionData.title}</Heading>
                 <Text>{sectionData.description}</Text>

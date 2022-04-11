@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { Flex } from './Flex.styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import useLocalStorage from '../hooks/useLocalStorage';
 import { css } from 'styled-components';
+import { useForm } from '../contexts/FormContext';
 
 const SelectWrapper = styled(Flex).attrs({
     $alignItems: 'stretch'
@@ -63,7 +63,8 @@ const SelectStyled = styled.select`
 `;
 
 const NativeSelect = ({ name, label, onChange, options }) => {
-    const [value, setValue] = useLocalStorage(name, '');
+    const [data, setData] = useForm();
+    const [value, setValue] = useState(data[name] ?? '');
 
     useEffect(() => {
         if (onChange) onChange({ [name]: value });

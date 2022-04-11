@@ -7,7 +7,7 @@ import { Text } from './Text.styled';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { Flex } from './Flex.styled';
-import useLocalStorage from '../hooks/useLocalStorage';
+import { useForm } from '../contexts/FormContext';
 library.add(fas);
 
 const IconCardStyled = styled(Card)`
@@ -17,15 +17,16 @@ const IconCardStyled = styled(Card)`
 	};
 `;
 
-const IconCardSelect = (props) => {
-    const [selected, setSelected] = useLocalStorage(props.name, false);
+const IconCardSelect = ({ name, onChange, icon, label }) => {
+	const [data, setData] = useForm();
+    const [selected, setSelected] = useState(data[name] ?? false);
 
 	const handleClick = () => {
 		setSelected(prevState => !prevState);
 	};
 
 	useEffect(() => {
-		if (props.onChange) props.onChange({ [props.name]: selected });
+		if (onChange) onChange({ [name]: selected });
 	}, [selected]);
 
 	const theme = useTheme();
@@ -37,15 +38,12 @@ const IconCardSelect = (props) => {
 			style={{ transition: 'all 150ms ease' }}
         >
             <FontAwesomeIcon
-				icon={['fas', props.icon]}
+				icon={['fas', icon]}
 				size='2x'
 				color={selected ? theme.colors.primary.main : theme.colors.gray.main}
 				style={{ transition: 'all 150ms ease' }}
 			/>
-			<Flex $flexDirection='column' $gap='.25rem'>
-				<Text $fontWeight={600} $textAlign='center'>{props.label}</Text>
-				<Text $fontSize='.75rem' $textAlign='center' $whiteSpace='break-spaces'>Est. Service Time:<br />{props.timeEstimate || 'N/A'}</Text>
-			</Flex>
+			<Text $fontWeight={600} $textAlign='center'>{label}</Text>
         </IconCardStyled>
 	);
 };

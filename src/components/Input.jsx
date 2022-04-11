@@ -4,7 +4,8 @@ import { Flex } from './Flex.styled';
 import { css } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import useLocalStorage from '../hooks/useLocalStorage';
+import React from 'react';
+import { useForm } from '../contexts/FormContext';
 
 const InputWrapper = styled(Flex).attrs({
     $alignItems: 'stretch'
@@ -57,8 +58,9 @@ const InputStyled = styled.input`
     };
 `;
 
-const Input = ({ type, name, label, onChange}) => {
-    const [value, setValue] = useLocalStorage(name, '');
+const Input = React.forwardRef(({ type, name, label, onChange }, ref) => {
+    const [data, setData] = useForm();
+    const [value, setValue] = useState(data[name] ?? '');
 
     useEffect(() => {
         if (onChange) onChange({ [name]: value });
@@ -70,19 +72,17 @@ const Input = ({ type, name, label, onChange}) => {
 
     const clearInput = () => {
         setValue('');
-        inputEl.current.focus();
     };
-
-    const inputEl = useRef(null);
 
     return (
         <InputWrapper>
             <InputStyled
-                ref={inputEl}
                 type={type}
                 name={name}
                 value={value}
+                ref={ref}
                 onChange={handleChange}
+                autoComplete='new-password'
             />
             <Placeholder>{label}</Placeholder>
             <ClearInputButton onClick={clearInput}>
@@ -90,7 +90,7 @@ const Input = ({ type, name, label, onChange}) => {
             </ClearInputButton>
         </InputWrapper>
     );
-};
+})
 
 Input.defaultProps = {
     type: 'text'

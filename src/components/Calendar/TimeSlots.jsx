@@ -2,10 +2,9 @@ import { useEffect, useState } from 'react';
 import { Button } from '../Button.styled';
 import { Text } from '../Text.styled';
 import { Flex } from '../Flex.styled';
-import useLocalStorage from '../../hooks/useLocalStorage';
 
 const TimeSlots = ({timeSlots=['11:30 AM','12:00 PM','1:30 PM'], date, onChange, instructions }) => {
-    const [selectedTime, setSelectedTime] = useLocalStorage('time-slot', '');
+    const [selectedTime, setSelectedTime] = useState('');
     const [selectedDate, setSelectedDate] = useState(date);
 
     const handleClick = (e) => {
@@ -21,7 +20,6 @@ const TimeSlots = ({timeSlots=['11:30 AM','12:00 PM','1:30 PM'], date, onChange,
     });
 
     useEffect(() => {
-        console.log(selectedTime);
         onChange && onChange({ date: date, time: selectedTime });
     }, [selectedTime]);
 

@@ -1,6 +1,7 @@
 import { Grid } from '../../../components/Grid.styled';
 import IconCardSelect from '../../../components/IconCardSelect';
 import { useEffect, useState } from 'react';
+import { useForm } from '../../../contexts/FormContext';
 
 export const serviceData = {
     services: [
@@ -38,15 +39,11 @@ export const serviceData = {
 };
 
 const ServiceStep = ({ name, onChange }) => {
-    const [stepData, setStepData] = useState({});
+    const [data, setData] = useForm();
 
     const handleChange = (valueObj) => {
-        setStepData(prevData => ({ ...prevData, ...valueObj }));
+        setData(prevData => ({ ...prevData, ...valueObj }));
     };
-
-    useEffect(() => {
-        if (onChange) onChange({ [name]: stepData });
-    }, [stepData]);
 
     return (
         <Grid
@@ -60,7 +57,6 @@ const ServiceStep = ({ name, onChange }) => {
                         icon={service.icon}
                         name={service.name}
                         label={service.label}
-                        timeEstimate={`${service.estTime} hr`}
                         onChange={handleChange}
                     />
                 );

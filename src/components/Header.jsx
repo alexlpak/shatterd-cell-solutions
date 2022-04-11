@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import { smoothScrollToElement } from '../helper/smoothScrollToElement';
 import { useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react';
+import { useAuth } from '../contexts/AuthContext';
 
 const HeaderStyled = styled(Section)`
     position: sticky;
@@ -19,6 +20,9 @@ const HeaderStyled = styled(Section)`
 `;
 
 const Header = () => {
+
+    const { currentUser, logout } = useAuth();
+
     const [isScheduleLocation, setIsScheduleLocation] = useState(false);
 
     const location = useLocation();

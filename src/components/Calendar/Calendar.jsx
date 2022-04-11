@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import CalendarDays from './CalendarDays';
 import CalendarTitleNav from './CalendarTitleNav';
 import TimeSlots from './TimeSlots';
-import useLocalStorage from '../../hooks/useLocalStorage';
 
 const Calendar = ({ onChange }) => {
     const today = new Date();
@@ -12,7 +11,7 @@ const Calendar = ({ onChange }) => {
 
     const [month, setMonth] = useState(thisMonth);
     const [year, setYear] = useState(thisYear);
-    const [selectedDate, setSelectedDate] = useLocalStorage('calendar-date', '');
+    const [selectedDate, setSelectedDate] = useState('');
 
     useEffect(() => {
         onChange && onChange(selectedDate);

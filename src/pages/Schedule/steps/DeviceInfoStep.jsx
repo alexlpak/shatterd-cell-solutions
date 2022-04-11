@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import NativeSelect from '../../../components/NativeSelect';
+import { useForm } from '../../../contexts/FormContext';
+import { Flex } from '../../../components/Flex.styled';
 
 const DeviceInfoStep = ({ name, onChange }) => {
-    const [data, setData] = useState({});
+    const [data, setData] = useForm();
 
     const handleChange = (valueObj) => {
         setData(prevData => ({ ...prevData, ...valueObj }));
@@ -16,19 +18,19 @@ const DeviceInfoStep = ({ name, onChange }) => {
         <>
             <NativeSelect
                 name='type'
-                label='Type'
+                label='Device Type'
                 options={['Apple','Samsung','LG','Logitech','Sony','Yamaha','Fender','Gibson']}
                 onChange={handleChange}
             />
             <NativeSelect
                 name='brand'
-                label='Brand'
+                label='Device Brand'
                 options={['Apple','Samsung','LG','Logitech','Sony','Yamaha','Fender','Gibson']}
                 onChange={handleChange}
             />
             <NativeSelect
                 name='model'
-                label='Model'
+                label='Device Model'
                 options={['Apple','Samsung','LG','Logitech','Sony','Yamaha','Fender','Gibson']}
                 onChange={handleChange}
             />
