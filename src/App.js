@@ -15,6 +15,7 @@ import PrivateRoute from './components/PrivateRoute';
 import ResetPassword from './components/ResetPassword';
 import UpdateProfile from './components/UpdateProfile';
 import { FormProvider } from './contexts/FormContext';
+import { WindowWidthProvider } from './contexts/WindowWidthContext';
 
 const App = () => {
   return (
@@ -22,23 +23,20 @@ const App = () => {
         <ResetStyle />
         <GlobalStyle />
         <AuthProvider>
+        <WindowWidthProvider>
           <FormProvider>
             <ThemeProvider theme={themes}>
               <Router>
                 <Header />
                 <Routes>
                   <Route path='/' element={<Home />} />
-                  <Route path='/schedule' element={<PrivateRoute><Schedule /></PrivateRoute>} />
-                  <Route path='/signup' element={<SignUp />} />
-                  <Route path='/signin' element={<SignIn />} />
-                  <Route path='/signin-email' element={<SignInWithEmail />} />
-                  <Route path='/reset-password' element={<ResetPassword />} />
-                  <Route path='/update-profile' element={<PrivateRoute><UpdateProfile /></PrivateRoute>} />
+                  <Route path='/schedule' element={<Schedule />} />
                 </Routes>
                 <Footer />
               </Router>
             </ThemeProvider>
           </FormProvider>
+        </WindowWidthProvider>
         </AuthProvider>
     </>
   );

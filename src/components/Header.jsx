@@ -20,7 +20,6 @@ const HeaderStyled = styled(Section)`
 `;
 
 const Header = () => {
-
     const { currentUser, logout } = useAuth();
 
     const [isScheduleLocation, setIsScheduleLocation] = useState(false);

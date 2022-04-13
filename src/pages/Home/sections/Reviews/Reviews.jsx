@@ -5,6 +5,10 @@ import { Text } from '../../../../components/Text.styled';
 import ScheduleAppointmentButton from '../../../../components/ScheduleAppointmentButton';
 import { useTheme } from 'styled-components';
 import ReviewCard from './ReviewCard';
+import { useEffect, useState } from 'react';
+import useLocalStorage from '../../../../hooks/useLocalStorage';
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/react-splide/css';
 
 const sectionData = {
     title: 'Reviews',
@@ -20,18 +24,61 @@ const data = {
     rating: 4
 };
 
-const reviews = new Array(3).fill(data);
+const reviewData = new Array(3).fill(data);
 
 const Reviews = () => {
+    const [reviews, setReviews] = useLocalStorage('google-reviews', []);
+
+    useEffect(() => {
+        console.log(reviews);
+    }, [reviews]);
+
     const theme = useTheme();
+
+    useEffect(() => {
+        const existingScript = document.getElementById('gmapsapi');
+        if (!existingScript) {
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=${process.env.REACT_APP_GOOGLE_API_KEY}`;
+            script.id = 'gmapsapi';
+            document.body.appendChild(script);
+            script.onload = () => {
+                const logPlaceDetails = (placeId) => {
+                    const service = new window.google.maps.places.PlacesService(document.getElementById('map'));
+                    service.getDetails({
+                        placeId: placeId
+                    }, (place, status) => {
+                        setReviews(place.reviews);
+                    });
+                };
+                logPlaceDetails(process.env.REACT_APP_GOOGLE_BUSINESS_ID);
+            };
+        };
+    }, []);
+
     return (
         <Section id='reviews'>
             <Flex $flexDirection='column' $alignItems='center' $gap='1rem'>
                 <Heading $color={theme.colors.primary.main}>{sectionData.title}</Heading>
                 <Text>{sectionData.description}</Text>
-                <Flex $alignItems='center' $justifyContent='center'>
-                    {reviews.map((review, index) => <ReviewCard margin='.5rem' key={review.body+index} {...review} />)}
-                </Flex>
+                <Splide
+                    options={{
+                        type: 'loop',
+                        gap: '1rem',
+                        width: '100%',
+                        padding: '5rem',
+                        autoWidth: true,
+                        autoPlay: true,
+                    }}
+                >
+                    {reviews && reviews.map((review, index) => {
+                        return (
+                            <SplideSlide key={`${review.text+index}`}>
+                                <ReviewCard margin='.5rem' {...review} />
+                            </SplideSlide>
+                        );
+                    })}
+                </Splide>
                 <ScheduleAppointmentButton />
             </Flex>
         </Section>

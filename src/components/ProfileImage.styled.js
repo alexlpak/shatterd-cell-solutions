@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { Image } from './Image.styled';
 
 export const ProfileImage = styled(Image)`
-    background-color: ${({ theme }) => theme.colors.primary.main};
+    background-color: ${({ theme, src }) => !src && theme.colors.primary.main};
     border-radius: 50%;
     overflow: hidden;
     position: relative;

@@ -1,26 +1,21 @@
-import { useEffect } from 'react';
-import styled from 'styled-components';
-import { useAuth } from '../contexts/AuthContext';
-
-const CalendlyStyled = styled.div`
-    height: 100vh;
-    width: 100%;
-`;
+import { InlineWidget } from 'react-calendly';
+import { useTheme } from 'styled-components';
 
 const CalendlyWidget = () => {
-    const { emailUser } = useAuth();
-    useEffect(() => {
-        Calendly.initInlineWidget({
-            url: 'https://calendly.com/alexlpak/30min',
-            parentElement: document.getElementById('calendlyWidget'),
-            prefill: {
-                name: `${emailUser.firstName} ${emailUser.lastName}`,
-                email: emailUser.email
-            },
-            utm: {}
-        })
-    }, []);
-  return <CalendlyStyled id='calendlyWidget' />;
+    const theme = useTheme();
+  return (
+      <>
+        <InlineWidget
+            styles={{
+                height: '50rem'
+            }}
+            pageSettings={{
+                primaryColor: theme.colors.primary.main.replace('#', '')
+            }}
+            url='https://calendly.com/alexlpak/30min'
+        />
+      </>
+  );
 };
 
 export default CalendlyWidget;

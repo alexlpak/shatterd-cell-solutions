@@ -6,31 +6,26 @@ import { Card } from '../../../../components/Card.styled';
 import { Flex } from '../../../../components/Flex.styled';
 import { useTheme } from 'styled-components';
 
-const ReviewCard = (props) => {
+const ReviewCard = ({ author_name, profile_photo_url, relative_time_description, text, rating }) => {
     const theme = useTheme();
-
+        
     return (
-        <Card $width='15rem' $margin={props.margin} $padding='2rem' $border={`2px solid ${theme.colors.lightGray.main}`}>
+        <Card $padding='2rem' $border={`2px solid ${theme.colors.lightGray.main}`}>
             <Flex $gap='1rem' $alignItems='center' $width='100%'>
-                <ProfileImage $size='4rem' src={props.imgSrc || null} />
+                <ProfileImage $size='4rem' src={profile_photo_url || null} />
                 <Flex $flexDirection='column'>
-                    <Text $fontWeight={600}>{props.name}</Text>
-                    <Text>{props.date}</Text>
+                    <Text $fontWeight={600}>{author_name}</Text>
+                    <Text>{relative_time_description}</Text>
                 </Flex>
             </Flex>
             <Flex $flexDirection='column' $gap='1rem'>
-                <Text $fontWeight={600}>{props.title}</Text>
-                <Text>{props.body}</Text>
-            </Flex>
             <Flex>
                 {new Array(5).fill('').map((item, index) => {
-                    if (index+1 <= props.rating) {
-                        return <FontAwesomeIcon key={props.name+index} icon={faStar} color={theme.colors.primary.main} />
-                    }
-                    else {
-                        return <FontAwesomeIcon key={props.name+index} icon={faStar} color={theme.colors.lightGray.main} />
-                    };
+                    const starColor = index+1 <= rating ? theme.colors.primary.main : theme.colors.lightGray.main;
+                    return <FontAwesomeIcon key={author_name+index} icon={faStar} color={starColor} />
                 })}
+            </Flex>
+                <Text>{text}</Text>
             </Flex>
         </Card>
     );
