@@ -4,7 +4,7 @@ import { Text } from '../../../../components/Text.styled';
 import { Button } from '../../../../components/Button.styled';
 import { Flex } from '../../../../components/Flex.styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faLocationDot, faPhone, faEnvelope, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faLocationDot, faPhone, faEnvelope, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { useTheme } from 'styled-components';
 import { Link } from '../../../../components/Link.styled';
 import GoogleMap from '../../../../components/GoogleMap';
@@ -33,7 +33,8 @@ const data = {
 const ContactItemStyled = styled(Flex).attrs({
     $gap: '1rem',
     $alignItems: 'center',
-    $justifyContent: 'center'
+    $justifyContent: 'center',
+    $flexWrap: 'nowrap',
 })`
     ${({ $hover }) => {
         return $hover && css`
@@ -44,10 +45,10 @@ const ContactItemStyled = styled(Flex).attrs({
     }};
 `;
 
-const ContactItem = ({ icon, text, children, hover }) => {
+const ContactItem = ({ icon, text, children, hover, onClick }) => {
     const theme = useTheme();
     return (
-        <ContactItemStyled $hover={hover}>
+        <ContactItemStyled onClick={onClick} $hover={hover}>
             <FontAwesomeIcon icon={icon} size='2x' color={theme.colors.primary.main} />
             {children ? children : <Text $whiteSpace='break-spaces'>{text}</Text>}
         </ContactItemStyled>
@@ -58,14 +59,27 @@ const Hours = () => {
     const [hoursVisible, setHoursVisible] = useState(false);
     const { hours } = data;
     return (
-        <ContactItem hover={true} icon={faClock}>
-            <Flex $flexDirection='column' $gap='.5rem' onClick={() => setHoursVisible(prevVal => !prevVal)}>
+        <ContactItem hover={true} icon={faClock} onClick={() => setHoursVisible(prevVal => !prevVal)}>
+            <Flex $gap='.5rem' $alignItems='center' $flexWrap='noWrap'>
                 {hoursVisible ?
-                    Object.keys(hours).map(day => <Text key={day}>{capitalizeWord(day)} {hours[day]}</Text>) :
-                    <Text>Open today {hours[Object.keys(hours)[new Date().getDay()]]}</Text>
+                    <>
+                        <Flex $flexDirection='column' $gap='.5rem' $flexWrap='nowrap' $justifyContent='center'>
+                            {
+                                Object.keys(hours).map(day => {
+                                    return <Text $whiteSpace='break-spaces' key={day}>{capitalizeWord(day)} {hours[day]}</Text>
+                                })
+                            }
+                            
+                        </Flex>
+                        <FontAwesomeIcon icon={faAngleUp} />
+                    </>
+                     :
+                    <Flex $gap='.5rem' $flexWrap='nowrap' $alignItems='center' $justifyContent='center'>
+                        <Text>Open today {hours[Object.keys(hours)[new Date().getDay()]]}</Text>
+                        <FontAwesomeIcon icon={faAngleDown} />
+                    </Flex>
                 }
             </Flex>
-            <FontAwesomeIcon icon={faAngleDown} />
         </ContactItem>
     );
 };
@@ -82,7 +96,9 @@ const ContactUs = () => {
                 <Flex $gap='1rem' $justifyContent='center'>
                     <Flex $gap='1rem' $alignItems='flex-start' $flexDirection='column'>
                         <ContactItem icon={faLocationDot} text={data.address} />
-                        <ContactItem icon={faPhone} text={data.phone} />
+                        <ContactItem icon={faPhone}>
+                            <Link href={`tel: ${data.phone}`}>{data.phone}</Link>
+                        </ContactItem>
                         <Hours />
                         <Link style={{ alignSelf: isBreakpoint && 'center' }} href='mailto:alex@apak.design?subject=Contact Us'>
                             <Button $flex $gap='.5rem' $primary $centered>

@@ -5,8 +5,6 @@ import { useTheme } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookSquare, faInstagramSquare } from '@fortawesome/free-brands-svg-icons';
 import { Link } from './Link.styled';
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
 const Footer = () => {
@@ -20,8 +18,8 @@ const Footer = () => {
             $backgroundColor={theme.colors.primary.main}
             $color='white'
         >
-            <Flex $alignItems='center' $justifyContent={isBreakpoint ? 'center' : 'space-between'} $width='100%'>
-                <Text>Copyright © 2022 Shatter'd Cell Solutions - All Rights Reserved.</Text>
+            <Flex $alignItems='center' $justifyContent={isBreakpoint ? 'center' : 'space-between'} $width='100%' $gap='1rem'>
+                <Text $maxWidth='100%' $textAlign='center'>Copyright © 2022 Shatter'd Cell Solutions - All Rights Reserved.</Text>
                 <Flex $gap='1rem'>
                     <Link href='https://www.facebook.com/shatterdcell/' target='_blank'>
                         <FontAwesomeIcon icon={faFacebookSquare} size='2x' />

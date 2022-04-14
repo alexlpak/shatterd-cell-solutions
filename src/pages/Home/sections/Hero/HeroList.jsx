@@ -6,7 +6,7 @@ import { Text } from '../../../../components/Text.styled';
 
 const data = [
     'Phone, tablet, game console, and laptop repair',
-    'High-quality parts backed with warranty',
+    'High-quality parts backed with warranty *',
     '100% satisfaction guaratee',
     'Free estimates',
 ];

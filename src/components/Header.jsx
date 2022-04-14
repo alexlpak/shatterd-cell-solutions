@@ -12,7 +12,6 @@ import { useEffect, useState, useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { AnimatePresence } from 'framer-motion';
 
 const HeaderStyled = styled(Section)`
     position: sticky;

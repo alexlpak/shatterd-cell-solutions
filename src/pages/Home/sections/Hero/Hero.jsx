@@ -6,11 +6,12 @@ import { useTheme } from 'styled-components';
 import HeroPhoneImage from './HeroPhoneImage/HeroPhoneImage';
 import ScheduleAppointmentButton from '../../../../components/ScheduleAppointmentButton';
 import { useMediaQuery } from 'react-responsive';
+import { Text } from '../../../../components/Text.styled';
 
 const Hero = () => {
     const theme = useTheme();
 
-    const isBreakpoint = useMediaQuery({ maxWidth: 658 });
+    const isBreakpoint = useMediaQuery({ maxWidth: 735 });
 
     return (
         <Section id='hero'>
@@ -23,6 +24,7 @@ const Hero = () => {
                     </Flex>
                     <HeroList />
                     <ScheduleAppointmentButton />
+                    <Text $fontSize='.75rem' $color={theme.colors.darkGray.main}>* Warranty is valid on most parts. Some exclusions apply.</Text>
                 </Flex>
             </Flex>
         </Section>
