@@ -14,7 +14,7 @@ const App = () => {
         <ResetStyle />
         <GlobalStyle />
         <ThemeProvider theme={themes}>
-          <Router>
+          <Router basename={process.env.PUBLIC_URL}>
             <Header />
             <Routes>
               <Route path='/' element={<Home />} />
