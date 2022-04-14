@@ -27,4 +27,6 @@ jobs:
           branch: gh-pages # The branch the action should deploy to.
           folder: build # The folder the action should deploy.
       - name: Checking API
-        run: echo "API Key Check ${{ env.REACT_APP_GOOGLE_API_KEY }} ${{ env.REACT_APP_GOOGLE_BUSINESS_ID }}"
+        run: |
+          echo $REACT_APP_GOOGLE_API_KEY
+          echo $REACT_APP_GOOGLE_BUSINESS_ID
