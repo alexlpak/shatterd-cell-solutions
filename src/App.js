@@ -7,28 +7,22 @@ import Schedule from './pages/Schedule/Schedule';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
-import { AuthProvider } from './contexts/AuthContext';
-import { FormProvider } from './contexts/FormContext';
 
 const App = () => {
   return (
     <>
         <ResetStyle />
         <GlobalStyle />
-        <AuthProvider>
-          <FormProvider>
-            <ThemeProvider theme={themes}>
-              <Router>
-                <Header />
-                <Routes>
-                  <Route path='/' element={<Home />} />
-                  <Route path='/schedule' element={<Schedule />} />
-                </Routes>
-                <Footer />
-              </Router>
-            </ThemeProvider>
-          </FormProvider>
-        </AuthProvider>
+        <ThemeProvider theme={themes}>
+          <Router>
+            <Header />
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/schedule' element={<Schedule />} />
+            </Routes>
+            <Footer />
+          </Router>
+        </ThemeProvider>
     </>
   );
 }

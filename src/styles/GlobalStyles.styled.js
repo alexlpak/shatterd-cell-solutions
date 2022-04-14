@@ -23,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
         height: 100%;
         width: 100%;
         margin: 0;
-        font-size: 14px;
+        font-size: 16px;
         font-family: Montserrat, sans-serif;
     }
 
