@@ -1,6 +1,5 @@
 import { Section } from '../../../components/Section.styled';
 import { Flex } from '../../../components/Flex.styled';
-import { Grid } from '../../../components/Grid.styled';
 import { Heading } from '../../../components/Heading.styled';
 import { Text } from '../../../components/Text.styled';
 import { useTheme } from 'styled-components';
