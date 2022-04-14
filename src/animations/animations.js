@@ -39,7 +39,7 @@ export const slideDown = {
     animate: {
         y: 0,
         transition: {
-            duration: 0.25,
+            duration: 2,
             type: 'spring',
             damping: 25,
             stiffness: 100

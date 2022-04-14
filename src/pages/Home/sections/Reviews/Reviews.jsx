@@ -30,10 +30,6 @@ const reviewData = new Array(3).fill(data);
 const Reviews = () => {
     const [reviews, setReviews] = useLocalStorage('google-reviews', []);
 
-    useEffect(() => {
-        console.log(reviews);
-    }, [reviews]);
-
     const theme = useTheme();
 
     useEffect(() => {
@@ -49,7 +45,6 @@ const Reviews = () => {
                     service.getDetails({
                         placeId: placeId
                     }, (place, status) => {
-                        console.log('fetched reviews', place);
                         setReviews(place.reviews);
                     });
                 };

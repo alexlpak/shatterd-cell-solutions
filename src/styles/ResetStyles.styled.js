@@ -17,8 +17,6 @@ const ResetStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         border: 0;
-        font-size: 100%;
-        font: inherit;
         vertical-align: baseline;
     }
     article, aside, details, figcaption, figure, 
@@ -26,7 +24,7 @@ const ResetStyle = createGlobalStyle`
         display: block;
     }
     body {
-        line-height: 1;
+        line-height: normal;
     }
     ol, ul {
         list-style: none;

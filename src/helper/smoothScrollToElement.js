@@ -4,3 +4,5 @@ export const smoothScrollToElement = (selector) => {
     const targetY = elementTop+window.pageYOffset-headerOffset;
     window.scrollTo({ behavior: 'smooth', top: targetY });
 };
+
+export const smoothScrollToTop = () => window.scrollTo({ behavior: 'smooth', top: 0 });

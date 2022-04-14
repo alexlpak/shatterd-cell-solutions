@@ -10,11 +10,11 @@ import { useMediaQuery } from 'react-responsive';
 const Hero = () => {
     const theme = useTheme();
 
-    const isBreakpoint = useMediaQuery({ maxWidth: 714 });
+    const isBreakpoint = useMediaQuery({ maxWidth: 658 });
 
     return (
         <Section id='hero'>
-            <Flex $justifyContent='center' $gap='1rem' $flexDirection='row-reverse'>
+            <Flex $justifyContent='center' $alignItems='center' $gap='1rem' $flexDirection='row-reverse'>
                 <HeroPhoneImage />
                 <Flex $flexDirection='column' $alignItems={isBreakpoint ? 'center': 'flex-start'} $justifyContent='center' $gap='1rem'>
                     <Flex $flexDirection='column'>

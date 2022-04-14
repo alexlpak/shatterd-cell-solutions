@@ -2,7 +2,6 @@ import { Section } from '../../../components/Section.styled';
 import { Flex } from '../../../components/Flex.styled';
 import { Text } from '../../../components/Text.styled';
 import { useTheme } from 'styled-components';
-import { fadeInOut } from '../../../animations/animations';
 
 const Banner = () => {
     const theme = useTheme();

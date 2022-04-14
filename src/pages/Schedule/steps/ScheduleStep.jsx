@@ -10,7 +10,6 @@ const ScheduleStep = ({ name, onChange }) => {
     const [data, setData] = useForm();
 
     useEffect(() => {
-        console.log(time);
         setData(prevData => ({...prevData, date: time }));
     }, [time]);
 

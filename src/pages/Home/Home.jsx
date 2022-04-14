@@ -5,13 +5,10 @@ import Promotions from './sections/Promotions/Promotions';
 import ContactUs from './sections/Contact/Contact';
 import Banner from './sections/Banner';
 import { useEffect } from 'react';
-import { useAuth } from '../../contexts/AuthContext';
 
 const Home = () => {
-    const { currentUser } = useAuth();
     useEffect(() => {
-        // clear localStorage to clear form values
-        localStorage.clear();
+        window.scrollTo(0, 0);
     }, []);
 
     return (

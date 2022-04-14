@@ -15,12 +15,10 @@ const Form = ({ name, onComplete, children }) => {
     };
 
     useEffect(() => {
-        console.log('Form (data):',data);
         setFormComplete(checkFormCompletion());
     }, [data]);
 
     useEffect(() => {
-        console.log('Form (formComplete):',formComplete);
         if (onComplete && formComplete) onComplete(data);
     }, [formComplete]);
 

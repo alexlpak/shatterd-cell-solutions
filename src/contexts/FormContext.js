@@ -9,10 +9,6 @@ export const useForm = () => {
 export const FormProvider = ({children}) => {
     const [data, setData] = useState({});
 
-    useEffect(() => {
-        console.log(data);
-    }, [data]);
-
     const value = [data, setData];
 
     return (
