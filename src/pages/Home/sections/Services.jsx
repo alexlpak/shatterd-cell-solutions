@@ -6,6 +6,7 @@ import { Text } from '../../../components/Text.styled';
 import { useTheme } from 'styled-components';
 import IconCard from '../../../components/IconCard';
 import ScheduleAppointmentButton from '../../../components/ScheduleAppointmentButton';
+import { useMediaQuery } from 'react-responsive';
 
 const cardData = [
     { title: 'Free Device Diagnostic', icon: 'clipboard-check' },
@@ -23,20 +24,23 @@ const sectionData = {
 
 const Services = () => {
     const theme = useTheme();
+    const isBreakpoint = useMediaQuery({ maxWidth: 365 });
+
     return (
         <Section $backgroundColor={theme.colors.secondary.main} $color='white' id='services'>
             <Flex $flexDirection='column' $alignItems='center' $justifyContent='center' $gap='1rem'>
                 <Heading>{sectionData.title}</Heading>
                 <Text>{sectionData.description}</Text>
-                <Grid $gap='1rem' $gridTemplateColumns='repeat(3, 10rem)'>
+                <Flex layout $maxWidth='35rem' $gap='1rem' $alignItems='center' $justifyContent='center'>
                     {cardData.map(card => {
                         return (
                             <IconCard
+                                layout
                                 key={card.title}
                                 $iconColor={theme.colors.primary.main}
                                 $size='2x'
                                 $height='10rem'
-                                $width='10rem'
+                                $width={isBreakpoint ? '100%' : '10rem'}
                                 $icon={card.icon}
                                 $label={card.title}
                                 $border={`2px solid ${theme.colors.primary.main}`}
@@ -45,7 +49,7 @@ const Services = () => {
                             />
                         );
                     })}
-                </Grid>
+                </Flex>
                 <ScheduleAppointmentButton />
             </Flex>
         </Section>

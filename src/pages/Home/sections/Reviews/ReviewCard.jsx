@@ -10,7 +10,7 @@ const ReviewCard = ({ author_name, profile_photo_url, relative_time_description,
     const theme = useTheme();
         
     return (
-        <Card $padding='2rem' $border={`2px solid ${theme.colors.lightGray.main}`}>
+        <Card $width='fit-content' $margin='0 auto' $padding='2rem' $border={`2px solid ${theme.colors.lightGray.main}`}>
             <Flex $gap='1rem' $alignItems='center' $width='100%'>
                 <ProfileImage $size='4rem' src={profile_photo_url || null} />
                 <Flex $flexDirection='column'>

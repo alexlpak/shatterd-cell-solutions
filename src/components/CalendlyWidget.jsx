@@ -3,19 +3,18 @@ import { useTheme } from 'styled-components';
 
 const CalendlyWidget = () => {
     const theme = useTheme();
-  return (
-      <>
+
+    return (
         <InlineWidget
             styles={{
-                height: '50rem'
+                height: '100vh'
             }}
             pageSettings={{
                 primaryColor: theme.colors.primary.main.replace('#', '')
             }}
             url='https://calendly.com/alexlpak/30min'
         />
-      </>
-  );
+    );
 };
 
 export default CalendlyWidget;

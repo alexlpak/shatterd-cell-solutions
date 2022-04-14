@@ -5,13 +5,18 @@ import HeroList from './HeroList';
 import { useTheme } from 'styled-components';
 import HeroPhoneImage from './HeroPhoneImage/HeroPhoneImage';
 import ScheduleAppointmentButton from '../../../../components/ScheduleAppointmentButton';
+import { useMediaQuery } from 'react-responsive';
 
 const Hero = () => {
     const theme = useTheme();
+
+    const isBreakpoint = useMediaQuery({ maxWidth: 714 });
+
     return (
-        <Section>
-            <Flex $justifyContent='center' $gap='1rem'>
-                <Flex $flexDirection='column' $alignItems='flex-start' $justifyContent='center' $gap='1rem'>
+        <Section id='hero'>
+            <Flex $justifyContent='center' $gap='1rem' $flexDirection='row-reverse'>
+                <HeroPhoneImage />
+                <Flex $flexDirection='column' $alignItems={isBreakpoint ? 'center': 'flex-start'} $justifyContent='center' $gap='1rem'>
                     <Flex $flexDirection='column'>
                         <Heading>Fast, affordable</Heading>
                         <Heading $color={theme.colors.primary.main}>device repair</Heading>
@@ -19,7 +24,6 @@ const Hero = () => {
                     <HeroList />
                     <ScheduleAppointmentButton />
                 </Flex>
-                <HeroPhoneImage />
             </Flex>
         </Section>
     );

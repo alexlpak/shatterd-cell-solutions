@@ -17,12 +17,15 @@ const Map = styled.iframe.attrs({
     border-radius: .5rem;
     overflow: hidden;
     height: 25rem;
-    width: 25rem;
+    width: 100%;
     background-color: gray;
 `;
 
 const MapFrame = styled(Flex)`
     position: relative;
+    @media screen and (max-width: 669px) {
+        width: 100%;
+    }
 `;
 
 const GoogleMap = ({ address }) => {

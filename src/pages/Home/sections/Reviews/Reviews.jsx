@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import useLocalStorage from '../../../../hooks/useLocalStorage';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
+import { useMediaQuery } from 'react-responsive';
 
 const sectionData = {
     title: 'Reviews',
@@ -48,6 +49,7 @@ const Reviews = () => {
                     service.getDetails({
                         placeId: placeId
                     }, (place, status) => {
+                        console.log('fetched reviews', place);
                         setReviews(place.reviews);
                     });
                 };
@@ -58,23 +60,20 @@ const Reviews = () => {
 
     return (
         <Section id='reviews'>
-            <Flex $flexDirection='column' $alignItems='center' $gap='1rem'>
+            <Flex $flexDirection='column' $alignItems='center' $gap='1rem' $width='100%'>
                 <Heading $color={theme.colors.primary.main}>{sectionData.title}</Heading>
                 <Text>{sectionData.description}</Text>
                 <Splide
                     options={{
                         type: 'loop',
-                        gap: '1rem',
                         width: '100%',
-                        padding: '5rem',
-                        autoWidth: true,
-                        autoPlay: true,
+                        autoplay: true
                     }}
                 >
                     {reviews && reviews.map((review, index) => {
                         return (
                             <SplideSlide key={`${review.text+index}`}>
-                                <ReviewCard margin='.5rem' {...review} />
+                                <ReviewCard {...review} />
                             </SplideSlide>
                         );
                     })}

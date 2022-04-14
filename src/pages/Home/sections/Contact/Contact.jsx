@@ -10,6 +10,9 @@ import { Link } from '../../../../components/Link.styled';
 import GoogleMap from '../../../../components/GoogleMap';
 import { capitalizeWord } from '../../../../helper/string';
 import { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
+import styled from 'styled-components';
+import { css } from 'styled-components';
 
 const data = {
     title: 'Contact Us',
@@ -27,13 +30,27 @@ const data = {
     }
 };
 
-const ContactItem = ({ icon, text, children }) => {
+const ContactItemStyled = styled(Flex).attrs({
+    $gap: '1rem',
+    $alignItems: 'center',
+    $justifyContent: 'center'
+})`
+    ${({ $hover }) => {
+        return $hover && css`
+            &:hover {
+                cursor: pointer;
+            }
+        `;
+    }};
+`;
+
+const ContactItem = ({ icon, text, children, hover }) => {
     const theme = useTheme();
     return (
-        <Flex $gap='1rem' $alignItems='center' $justifyContent='center'>
+        <ContactItemStyled $hover={hover}>
             <FontAwesomeIcon icon={icon} size='2x' color={theme.colors.primary.main} />
             {children ? children : <Text $whiteSpace='break-spaces'>{text}</Text>}
-        </Flex>
+        </ContactItemStyled>
     );
 };
 
@@ -41,7 +58,7 @@ const Hours = () => {
     const [hoursVisible, setHoursVisible] = useState(false);
     const { hours } = data;
     return (
-        <ContactItem icon={faClock}>
+        <ContactItem hover={true} icon={faClock}>
             <Flex $flexDirection='column' $gap='.5rem' onClick={() => setHoursVisible(prevVal => !prevVal)}>
                 {hoursVisible ?
                     Object.keys(hours).map(day => <Text key={day}>{capitalizeWord(day)} {hours[day]}</Text>) :
@@ -55,18 +72,19 @@ const Hours = () => {
 
 const ContactUs = () => {
     const theme = useTheme();
+    const isBreakpoint = useMediaQuery({ maxWidth: 669 });
 
     return (
         <Section $backgroundColor={theme.colors.secondary.main} $color='white' id='contact'>
             <Flex $gap='1rem' $flexDirection='column' $alignItems='center'>
                 <Heading $textAlign='center'>{data.title}</Heading>
                 <Text $textAlign='center' $whiteSpace='break-spaces'>{data.body}</Text>
-                <Flex $gap='1rem'>
+                <Flex $gap='1rem' $justifyContent='center'>
                     <Flex $gap='1rem' $alignItems='flex-start' $flexDirection='column'>
                         <ContactItem icon={faLocationDot} text={data.address} />
                         <ContactItem icon={faPhone} text={data.phone} />
                         <Hours />
-                        <Link href='mailto:alex@apak.design?subject=Contact Us'>
+                        <Link style={{ alignSelf: isBreakpoint && 'center' }} href='mailto:alex@apak.design?subject=Contact Us'>
                             <Button $flex $gap='.5rem' $primary $centered>
                                 <Text>Send a Message</Text>
                                 <FontAwesomeIcon icon={faEnvelope} />

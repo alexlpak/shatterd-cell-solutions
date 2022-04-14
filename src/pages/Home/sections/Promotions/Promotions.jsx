@@ -20,7 +20,7 @@ const Promotions = () => {
     const theme = useTheme();
     return (
         <Section $backgroundColor={theme.colors.lightGray.main} id='promotions'>
-            <Flex $alignItems='center' $justifyContent='center' $flexWrap='wrap' $gap='1rem'>
+            <Flex $alignItems='flex-start' $justifyContent='center' $flexWrap='wrap' $gap='1rem'>
                 {data.map(promo => {
                     return <PromotionCard key={promo.title} {...promo} iconColor={theme.colors.primary.main} />
                 })}

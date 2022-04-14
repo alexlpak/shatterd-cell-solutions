@@ -61,3 +61,42 @@ export const fadeInOut = {
         opacity: 0
     }
 };
+
+// phone animation settings
+export const screenLiftOff = {
+    initial: {
+        opacity: 1
+    },
+    animate: {
+        y: -300,
+        opacity: 0,
+        transition: {
+            delay: 1,
+            duration: 0.5,
+            type: 'spring',
+            damping: 25,
+            stiffness: 100
+        }
+    },
+    exit: {
+        opacity: 0
+    }
+};
+
+export const screenPlaceOn = {
+    initial: {
+        opacity: 0,
+        y: -300,
+    },
+    animate: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            delay: 2,
+            duration: 0.5,
+            type: 'spring',
+            damping: 25,
+            stiffness: 100
+        }
+    }
+};

@@ -4,11 +4,12 @@ import { motion } from 'framer-motion';
 
 export const Flex = styled(motion.div)`
     display: flex;
+    position: ${({ $position }) => $position};
     flex-direction: ${({ $flexDirection }) => $flexDirection || 'row'};
     flex-grow: ${({ $flexGrow }) => $flexGrow || '0'};
     flex-basis: ${({ $flexBasis }) => $flexBasis || 'auto'};
     flex-shrink: ${({ $flexShrink }) => $flexShrink || '1'};
-    flex-wrap: ${({ $flexWrap }) => $flexWrap || 'nowrap'};
+    flex-wrap: ${({ $flexWrap }) => $flexWrap || 'wrap'};
     flex: ${({ $flex }) => $flex || '0 1 auto'};
     align-items: ${({ $alignItems }) => $alignItems || 'stretch'};
     justify-content: ${({ $justifyContent }) => $justifyContent || 'flex-start'};

@@ -11,6 +11,6 @@ export const Section = styled(motion.section)`
     background-color: ${({ $backgroundColor }) => $backgroundColor};
     color: ${({ $color }) => $color};
     & > * {
-        max-width: 50rem;
+        max-width: ${({ $maxWidth }) => $maxWidth || '50rem'};
     };
 `;
