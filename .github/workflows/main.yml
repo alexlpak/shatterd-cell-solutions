@@ -7,6 +7,9 @@ jobs:
   build-and-deploy:
     concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
+    env:
+      REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY }}
+      REACT_APP_GOOGLE_BUSINESS_ID: ${{ secrets.REACT_APP_GOOGLE_BUSINESS_ID }}
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
@@ -21,6 +24,5 @@ jobs:
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: build # The folder the action should deploy.
-        env:
-          REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY }}
-          REACT_APP_GOOGLE_BUSINESS_ID: ${{ secrets.REACT_APP_GOOGLE_BUSINESS_ID }}
+    steps:
+      run: echo "API Key Check ${{ env.REACT_APP_GOOGLE_API_KEY }} ${{ env.REACT_APP_GOOGLE_BUSINESS_ID }}"
