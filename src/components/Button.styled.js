@@ -19,7 +19,7 @@ export const Button = styled(motion.button)`
             `;
         }
         else if ($secondary) {
-            const { main, hover, active, disabled } = theme.colors.lightGray;
+            const { hover, active, disabled } = theme.colors.lightGray;
             return css`
                 border: 2px solid ${theme.colors.primary.main};
                 background-color: white;

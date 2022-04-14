@@ -1,6 +1,5 @@
 import { Card } from '../../../../components/Card.styled';
 import { Text } from '../../../../components/Text.styled';
-import { Button } from '../../../../components/Button.styled';
 import { SubHeading } from '../../../../components/SubHeading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';

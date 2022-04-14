@@ -5,27 +5,15 @@ import { Text } from '../../../../components/Text.styled';
 import ScheduleAppointmentButton from '../../../../components/ScheduleAppointmentButton';
 import { useTheme } from 'styled-components';
 import ReviewCard from './ReviewCard';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import useLocalStorage from '../../../../hooks/useLocalStorage';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
-import { useMediaQuery } from 'react-responsive';
 
 const sectionData = {
     title: 'Reviews',
     description: 'We guarantee great service here! Don\'t just take our word for it. Here\'s what some of our customer have to say:'
 };
-
-const data = {
-    name: 'John Doe',
-    date: '12/12/2021',
-    imgSrc: '',
-    title: 'Awesome work!',
-    body: 'This is sample description. I am just SO impressed like OMG wow what even is this.',
-    rating: 4
-};
-
-const reviewData = new Array(3).fill(data);
 
 const Reviews = () => {
     const [reviews, setReviews] = useLocalStorage('google-reviews', []);
@@ -35,6 +23,7 @@ const Reviews = () => {
     useEffect(() => {
         const existingScript = document.getElementById('gmapsapi');
         if (!existingScript) {
+            console.log('script loaded')
             const script = document.createElement('script');
             script.src = `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=${process.env.REACT_APP_GOOGLE_API_KEY}`;
             script.id = 'gmapsapi';
@@ -44,14 +33,14 @@ const Reviews = () => {
                     const service = new window.google.maps.places.PlacesService(document.getElementById('map'));
                     service.getDetails({
                         placeId: placeId
-                    }, (place, status) => {
+                    }, (place) => {
                         setReviews(place.reviews);
                     });
                 };
                 logPlaceDetails(process.env.REACT_APP_GOOGLE_BUSINESS_ID);
             };
         };
-    }, []);
+    }, [setReviews]);
 
     return (
         <Section id='reviews'>

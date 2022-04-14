@@ -1,5 +1,4 @@
 import { Text } from './Text.styled';
-import { Flex } from './Flex.styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Card } from './Card.styled';
 import { library } from '@fortawesome/fontawesome-svg-core';
