@@ -23,7 +23,6 @@ const Reviews = () => {
     useEffect(() => {
         const existingScript = document.getElementById('gmapsapi');
         if (!existingScript) {
-            console.log('script loaded')
             const script = document.createElement('script');
             script.src = `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=${process.env.REACT_APP_GOOGLE_API_KEY}`;
             script.id = 'gmapsapi';

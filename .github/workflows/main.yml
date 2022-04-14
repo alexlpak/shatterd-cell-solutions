@@ -3,13 +3,15 @@ on:
   push:
     branches:
       - main
+
+env:
+  REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY }}
+  REACT_APP_GOOGLE_BUSINESS_ID: ${{ secrets.REACT_APP_GOOGLE_BUSINESS_ID }}
+
 jobs:
   build-and-deploy:
     concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
-    env:
-      REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY }}
-      REACT_APP_GOOGLE_BUSINESS_ID: ${{ secrets.REACT_APP_GOOGLE_BUSINESS_ID }}
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
