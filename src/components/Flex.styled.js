@@ -16,7 +16,7 @@ export const Flex = styled(motion.div)`
     padding: ${({ $padding }) => $padding || '0'};
     width: ${({ $width }) => $width || 'auto'};
     height: ${({ $height }) => $height || 'auto'};
-    max-width: ${({ $maxWidth }) => $maxWidth || 'none'};
+    max-width: ${({ $maxWidth }) => $maxWidth};
     gap: ${({ $gap }) => $gap};
     & > * {
         max-height: ${({ $childMaxHeight }) => $childMaxHeight};
