@@ -1,11 +1,9 @@
-import { Flex } from '../../../../components/Flex.styled';
 import { Section } from '../../../../components/Section.styled';
 import { Heading } from '../../../../components/Heading.styled';
 import HeroList from './HeroList';
 import { useTheme } from 'styled-components';
 import HeroPhoneImage from './HeroPhoneImage/HeroPhoneImage';
 import ScheduleAppointmentButton from '../../../../components/ScheduleAppointmentButton';
-import { useMediaQuery } from 'react-responsive';
 import { Text } from '../../../../components/Text.styled';
 import styled from 'styled-components';
 
