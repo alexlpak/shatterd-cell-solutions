@@ -5,4 +5,5 @@ export const Heading = styled.h1`
     font-weight: 700;
     color: ${({ $color }) => $color};
     text-align: ${({ $textAlign }) => $textAlign};
+    white-space: ${({ $whiteSpace }) => $whiteSpace};
 `;

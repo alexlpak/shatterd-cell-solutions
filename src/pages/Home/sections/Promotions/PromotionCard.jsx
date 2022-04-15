@@ -15,9 +15,9 @@ const PromotionCard = ({ margin, icon, iconColor, title, text}) => {
     
     return (
         <Card $margin={margin} $width='100%' $alignItems='center' $padding='2rem' $backgroundColor='white'>
-            <Flex $gap='1rem' $alignItems='center' $justifyContent='center'>
+            <Flex $flexDirection='column' $gap='1rem' $alignItems='center' $justifyContent='center'>
                 <FontAwesomeIcon icon={['fas', icon]} size='2x' color={iconColor} />
-                <SubHeading $color={theme.colors.primary.main}>{title}</SubHeading>
+                <SubHeading $whiteSpace='break-spaces' $textAlign='center' $color={theme.colors.primary.main}>{title}</SubHeading>
             </Flex>
             <Text $whiteSpace='break-spaces'>{text}</Text>
             <ScheduleAppointmentButton />

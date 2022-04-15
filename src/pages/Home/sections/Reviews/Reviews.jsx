@@ -43,7 +43,7 @@ const Reviews = () => {
 
     return (
         <Section id='reviews'>
-            <Flex $flexDirection='column' $alignItems='center' $gap='1rem' $width='100%'>
+            <Flex $flexDirection='column' $alignItems='center' $gap='2rem' $width='100%'>
                 <Heading $color={theme.colors.primary.main}>{sectionData.title}</Heading>
                 <Text>{sectionData.description}</Text>
                 <Splide
@@ -53,6 +53,7 @@ const Reviews = () => {
                         autoplay: true,
                         perPage: 2,
                         gap: '1rem',
+                        pagination: false,
                         breakpoints: {
                             645: {
                                 perPage: 1

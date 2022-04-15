@@ -6,7 +6,7 @@ import styled, { useTheme } from 'styled-components';
 const data = [
     {
         icon: 'piggy-bank',
-        title: 'We Buy Broken Devices',
+        title: 'We Buy\nBroken Devices',
         text: 'Have a broken device that you don\'t want to get repaired?\n\nTrade it in for cash or use the credit towards your repair.'
     },
     {
@@ -32,7 +32,7 @@ const CardContainerStyled = styled(Flex)`
 const Promotions = () => {
     const theme = useTheme();
     return (
-        <Section $backgroundColor={theme.colors.lightGray.main} id='promotions'>
+        <Section $backgroundColor={theme.colors.primary.main} id='promotions'>
             <CardContainerStyled>
                 {data.map(promo => {
                     return <PromotionCard key={promo.title} {...promo} iconColor={theme.colors.primary.main} />
