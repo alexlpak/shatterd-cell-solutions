@@ -113,7 +113,7 @@ const Header = () => {
     const isBreakpoint = useMediaQuery({ maxWidth: 720 });
 
     return (
-        <HeaderStyled as='header'>
+        <HeaderStyled as='header' $padding='2rem'>
             <Flex $alignItems='center' $justifyContent='space-between' $width='100%' $position='relative'>
                 <RouterLink to='/'>
                     <Image src={CompanyLogo} $height='3rem' />

@@ -14,7 +14,7 @@ const Footer = () => {
     return (
         <Section
             as='footer'
-            $padding='4rem'
+            $padding='2rem'
             $backgroundColor={theme.colors.primary.main}
             $color='white'
         >
