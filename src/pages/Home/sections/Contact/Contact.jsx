@@ -50,7 +50,7 @@ const ContactItem = ({ icon, text, children, hover, onClick }) => {
     return (
         <ContactItemStyled onClick={onClick} $hover={hover}>
             <FontAwesomeIcon icon={icon} size='2x' color={theme.colors.primary.main} />
-            {children ? children : <Text $whiteSpace='break-spaces'>{text}</Text>}
+            {children ? children : <Text>{text}</Text>}
         </ContactItemStyled>
     );
 };
@@ -90,10 +90,10 @@ const ContactUs = () => {
 
     return (
         <Section $backgroundColor={theme.colors.secondary.main} $color='white' id='contact'>
-            <Flex $gap='1rem' $flexDirection='column' $alignItems='center'>
+            <Flex $gap='1rem' $flexDirection='column' $alignItems='center' $width='100%'>
                 <Heading $textAlign='center'>{data.title}</Heading>
                 <Text $textAlign='center' $whiteSpace='break-spaces'>{data.body}</Text>
-                <Flex $gap='1rem' $justifyContent='center'>
+                <Flex $gap='1rem' $justifyContent={isBreakpoint ? 'center' : 'space-between'} $width='100%' $flexWrap={isBreakpoint ? 'wrap' : 'nowrap'}>
                     <Flex $gap='1rem' $alignItems='flex-start' $flexDirection='column'>
                         <ContactItem icon={faLocationDot} text={data.address} />
                         <ContactItem icon={faPhone}>

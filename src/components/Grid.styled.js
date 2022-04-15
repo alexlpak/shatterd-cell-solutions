@@ -19,4 +19,5 @@ export const Grid = styled.div`
     gap: ${({ $gap}) => $gap};
     align-items: ${({ $alignItems}) => $alignItems};
     justify-content: ${({ $justifyContent}) => $justifyContent};
+    width: ${({ $width }) => $width};
 `;

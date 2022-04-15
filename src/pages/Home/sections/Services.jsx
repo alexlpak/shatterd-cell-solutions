@@ -6,6 +6,7 @@ import { useTheme } from 'styled-components';
 import IconCard from '../../../components/IconCard';
 import ScheduleAppointmentButton from '../../../components/ScheduleAppointmentButton';
 import { useMediaQuery } from 'react-responsive';
+import { Grid } from '../../../components/Grid.styled';
 
 const cardData = [
     { title: 'Free Device Diagnostic', icon: 'clipboard-check' },
@@ -23,23 +24,26 @@ const sectionData = {
 
 const Services = () => {
     const theme = useTheme();
-    const isBreakpoint = useMediaQuery({ maxWidth: 365 });
+    const isBreakpoint = useMediaQuery({ maxWidth: 580 });
 
     return (
         <Section $backgroundColor={theme.colors.secondary.main} $color='white' id='services'>
-            <Flex $flexDirection='column' $alignItems='center' $justifyContent='center' $gap='1rem'>
+            <Flex $flexDirection='column' $alignItems='center' $justifyContent='center' $gap='1rem' $width='100%'>
                 <Heading>{sectionData.title}</Heading>
                 <Text>{sectionData.description}</Text>
-                <Flex layout $maxWidth='35rem' $gap='1rem' $alignItems='center' $justifyContent='center'>
+                <Grid
+                    $gap='1rem'
+                    $width='100%'
+                    $gridTemplateColumns={isBreakpoint ? 'repeat(2, minmax(0, 1fr))' : 'repeat(3, minmax(0, 1fr))'}
+                    $gridTemplateRows={isBreakpoint ? 'repeat(3, minmax(0, 1fr))' : 'repeat(2, minmax(0, 1fr))'}
+                >
                     {cardData.map(card => {
                         return (
                             <IconCard
-                                layout
                                 key={card.title}
                                 $iconColor={theme.colors.primary.main}
                                 $size='2x'
-                                $height='10rem'
-                                $width={isBreakpoint ? '100%' : '10rem'}
+                                $width='100%'
                                 $icon={card.icon}
                                 $label={card.title}
                                 $border={`2px solid ${theme.colors.primary.main}`}
@@ -48,7 +52,7 @@ const Services = () => {
                             />
                         );
                     })}
-                </Flex>
+                </Grid>
                 <ScheduleAppointmentButton />
             </Flex>
         </Section>

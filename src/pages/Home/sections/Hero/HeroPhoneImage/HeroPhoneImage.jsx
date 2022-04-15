@@ -11,7 +11,7 @@ import {
 
 const HeroPhoneImage = () => {
     return (
-        <Flex {...slideInRight} style={{ position: 'relative' }} $alignItems='center' $justifyContent='center' $width='16rem' $height='20rem'>
+        <Flex {...slideInRight} style={{ position: 'relative' }} $alignItems='center' $justifyContent='center' $width='18rem' $height='20rem'>
             <Image style={{ position: 'absolute' }} src={PhoneBase} $width='100%' />
             <Image {...screenLiftOff} style={{ position: 'absolute' }} src={ScreenBroken} $width='100%' />
             <Image {...screenPlaceOn} style={{ position: 'absolute' }} src={ScreenFixed} $width='100%' />

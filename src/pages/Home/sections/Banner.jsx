@@ -8,7 +8,7 @@ const Banner = () => {
     return (
         <Section $backgroundColor={theme.colors.primary.main} $color='white' $padding='1rem'>
             <Flex $justifyContent='center' $alignItems='center'>
-                <Text $fontWeight={600}>Save $10 by booking your appointment online!</Text>
+                <Text $textAlign='center' $fontWeight={600}>Save $10 by booking your appointment online!</Text>
             </Flex>
         </Section>
     )

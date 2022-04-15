@@ -17,7 +17,7 @@ const HeroList = () => {
         <Flex as='ul' $flexDirection='column' $gap='1rem'>
             {data.map(item => {
                 return (
-                    <Flex as='li' $flexWrap='no-wrap' key={item} $gap='.5rem' $alignItems='center'>
+                    <Flex as='li' $flexWrap='nowrap' key={item} $gap='.5rem' $alignItems='center'>
                         <FontAwesomeIcon icon={faStar} color={theme.colors.primary.main} />
                         <Text>{item}</Text>
                     </Flex>

@@ -14,7 +14,7 @@ const PromotionCard = ({ margin, icon, iconColor, title, text}) => {
     const theme = useTheme();
     
     return (
-        <Card $margin={margin} $width='20rem' $alignItems='center' $padding='2rem' $backgroundColor='white'>
+        <Card $margin={margin} $width='100%' $alignItems='center' $padding='2rem' $backgroundColor='white'>
             <Flex $gap='1rem' $alignItems='center' $justifyContent='center'>
                 <FontAwesomeIcon icon={['fas', icon]} size='2x' color={iconColor} />
                 <SubHeading $color={theme.colors.primary.main}>{title}</SubHeading>

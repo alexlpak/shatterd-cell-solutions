@@ -23,6 +23,7 @@ const Map = styled.iframe.attrs({
 
 const MapFrame = styled(Flex)`
     position: relative;
+    width: 100%;
     @media screen and (max-width: 669px) {
         width: 100%;
     }

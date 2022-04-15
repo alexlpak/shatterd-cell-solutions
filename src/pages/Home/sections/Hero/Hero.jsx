@@ -11,11 +11,11 @@ import { Text } from '../../../../components/Text.styled';
 const Hero = () => {
     const theme = useTheme();
 
-    const isBreakpoint = useMediaQuery({ maxWidth: 735 });
+    const isBreakpoint = useMediaQuery({ maxWidth: 773 });
 
     return (
         <Section id='hero'>
-            <Flex $justifyContent='center' $alignItems='center' $gap='1rem' $flexDirection='row-reverse'>
+            <Flex $width='100%' $justifyContent={isBreakpoint ? 'center': 'space-between'} $alignItems='center' $gap='1rem' $flexDirection='row-reverse'>
                 <HeroPhoneImage />
                 <Flex $flexDirection='column' $alignItems={isBreakpoint ? 'center': 'flex-start'} $justifyContent='center' $gap='1rem'>
                     <Flex $flexDirection='column'>

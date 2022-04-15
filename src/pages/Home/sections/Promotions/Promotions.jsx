@@ -1,7 +1,7 @@
 import { Section } from '../../../../components/Section.styled';
 import { Flex } from '../../../../components/Flex.styled';
 import PromotionCard from './PromotionCard';
-import { useTheme } from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 
 const data = [
     {
@@ -16,15 +16,28 @@ const data = [
     }
 ];
 
+const CardContainerStyled = styled(Flex)`
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    @media screen and (max-width: 645px) {
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    };
+`;
+
 const Promotions = () => {
     const theme = useTheme();
     return (
         <Section $backgroundColor={theme.colors.lightGray.main} id='promotions'>
-            <Flex $alignItems='flex-start' $justifyContent='center' $flexWrap='wrap' $gap='1rem'>
+            <CardContainerStyled>
                 {data.map(promo => {
                     return <PromotionCard key={promo.title} {...promo} iconColor={theme.colors.primary.main} />
                 })}
-            </Flex>
+            </CardContainerStyled>
         </Section>
     );
 };

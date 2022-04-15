@@ -50,7 +50,14 @@ const Reviews = () => {
                     options={{
                         type: 'loop',
                         width: '100%',
-                        autoplay: true
+                        autoplay: true,
+                        perPage: 2,
+                        gap: '1rem',
+                        breakpoints: {
+                            645: {
+                                perPage: 1
+                            }
+                        }
                     }}
                 >
                     {reviews && reviews.map((review, index) => {
