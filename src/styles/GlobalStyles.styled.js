@@ -19,6 +19,8 @@ const GlobalStyle = createGlobalStyle`
         };
     }
 
+    ${'' /* div { border: 1px solid orange }; */}
+
     html {
         height: 100%;
         width: 100%;

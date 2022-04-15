@@ -7,26 +7,54 @@ import HeroPhoneImage from './HeroPhoneImage/HeroPhoneImage';
 import ScheduleAppointmentButton from '../../../../components/ScheduleAppointmentButton';
 import { useMediaQuery } from 'react-responsive';
 import { Text } from '../../../../components/Text.styled';
+import styled from 'styled-components';
+
+const HeroWrapper = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: row-reverse;
+    @media screen and (max-width: 773px) {
+        justify-content: center;
+        flex-wrap: wrap;
+    };
+`;
+
+const HeroTextWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    @media screen and (max-width: 773px) {
+        align-items: center;
+    };
+`;
+
+const HeaderText = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
 
 const Hero = () => {
     const theme = useTheme();
 
-    const isBreakpoint = useMediaQuery({ maxWidth: 773 });
-
     return (
         <Section id='hero'>
-            <Flex $width='100%' $justifyContent={isBreakpoint ? 'center': 'space-between'} $alignItems='center' $gap='1rem' $flexDirection='row-reverse'>
+            <HeroWrapper>
                 <HeroPhoneImage />
-                <Flex $flexDirection='column' $alignItems={isBreakpoint ? 'center': 'flex-start'} $justifyContent='center' $gap='1rem'>
-                    <Flex $flexDirection='column'>
+                <HeroTextWrapper>
+                    <HeaderText>
                         <Heading>Fast, affordable</Heading>
                         <Heading $color={theme.colors.primary.main}>device repair</Heading>
-                    </Flex>
+                    </HeaderText>
                     <HeroList />
                     <ScheduleAppointmentButton />
                     <Text $fontSize='.75rem' $color={theme.colors.darkGray.main}>* Warranty is valid on most parts. Some exclusions apply.</Text>
-                </Flex>
-            </Flex>
+                </HeroTextWrapper>
+            </HeroWrapper>
         </Section>
     );
 };

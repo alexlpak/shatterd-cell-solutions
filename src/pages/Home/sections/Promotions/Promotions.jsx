@@ -26,6 +26,7 @@ const CardContainerStyled = styled(Flex)`
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+        gap: 2rem;
     };
 `;
 

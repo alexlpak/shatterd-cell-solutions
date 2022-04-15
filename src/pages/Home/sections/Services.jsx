@@ -28,9 +28,11 @@ const Services = () => {
 
     return (
         <Section $backgroundColor={theme.colors.secondary.main} $color='white' id='services'>
-            <Flex $flexDirection='column' $alignItems='center' $justifyContent='center' $gap='1rem' $width='100%'>
-                <Heading>{sectionData.title}</Heading>
-                <Text>{sectionData.description}</Text>
+            <Flex $flexDirection='column' $alignItems='center' $justifyContent='center' $gap='2rem' $width='100%'>
+                <Flex $flexDirection='column' $alignItems='center' $gap='1rem'>
+                    <Heading>{sectionData.title}</Heading>
+                    <Text>{sectionData.description}</Text>
+                </Flex>
                 <Grid
                     $gap='1rem'
                     $width='100%'

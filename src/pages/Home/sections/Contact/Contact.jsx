@@ -90,11 +90,13 @@ const ContactUs = () => {
 
     return (
         <Section $backgroundColor={theme.colors.secondary.main} $color='white' id='contact'>
-            <Flex $gap='1rem' $flexDirection='column' $alignItems='center' $width='100%'>
-                <Heading $textAlign='center'>{data.title}</Heading>
-                <Text $textAlign='center' $whiteSpace='break-spaces'>{data.body}</Text>
-                <Flex $gap='1rem' $justifyContent={isBreakpoint ? 'center' : 'space-between'} $width='100%' $flexWrap={isBreakpoint ? 'wrap' : 'nowrap'}>
-                    <Flex $gap='1rem' $alignItems='flex-start' $flexDirection='column'>
+            <Flex $gap='2rem' $flexDirection='column' $alignItems='center' $width='100%'>
+                <Flex $gap='1rem' $flexDirection='column' $alignItems='center'>
+                    <Heading $textAlign='center'>{data.title}</Heading>
+                    <Text $textAlign='center' $whiteSpace='break-spaces'>{data.body}</Text>
+                </Flex>
+                <Flex $gap='2rem' $justifyContent={isBreakpoint ? 'center' : 'space-between'} $width='100%' $flexWrap={isBreakpoint ? 'wrap' : 'nowrap'}>
+                    <Flex $gap='2rem' $alignItems='flex-start' $flexDirection='column'>
                         <ContactItem icon={faLocationDot} text={data.address} />
                         <ContactItem icon={faPhone}>
                             <Link href={`tel: ${data.phone}`}>{data.phone}</Link>

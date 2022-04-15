@@ -44,8 +44,10 @@ const Reviews = () => {
     return (
         <Section id='reviews'>
             <Flex $flexDirection='column' $alignItems='center' $gap='2rem' $width='100%'>
-                <Heading $color={theme.colors.primary.main}>{sectionData.title}</Heading>
-                <Text>{sectionData.description}</Text>
+                <Flex $flexDirection='column' $alignItems='center' $gap='1rem'>
+                    <Heading $color={theme.colors.primary.main}>{sectionData.title}</Heading>
+                    <Text>{sectionData.description}</Text>
+                </Flex>
                 <Splide
                     options={{
                         type: 'loop',
