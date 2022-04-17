@@ -7,7 +7,7 @@ export const Section = styled(motion.section)`
     justify-content: center;
     flex-direction: column;
     margin: 0 auto;
-    padding: ${({ $padding }) => $padding || '4rem'};
+    padding: ${({ $padding }) => $padding || '4rem 2rem'};
     background-color: ${({ $backgroundColor }) => $backgroundColor};
     color: ${({ $color }) => $color};
     & > * {
