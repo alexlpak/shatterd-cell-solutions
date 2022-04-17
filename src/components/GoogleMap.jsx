@@ -33,7 +33,7 @@ const GoogleMap = ({ address }) => {
     return (
         <MapFrame $flexDirection='column' $alignItems='center'>
             <Map />
-            <Link href={`http://maps.google.com/?q=${address}`} target='_blank' style={{ position: 'absolute', bottom: '2rem' }}>
+            <Link href={`https://goo.gl/maps/5kN5rY3HsSthx8jN9`} target='_blank' style={{ position: 'absolute', bottom: '2rem' }}>
                 <Button $flex $gap='.5rem' $primary $centered>
                     <Text>Get Directions</Text>
                     <FontAwesomeIcon icon={faLocationDot} />

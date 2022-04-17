@@ -109,7 +109,7 @@ const ContactUs = () => {
                             </Button>
                         </Link>
                     </Flex>
-                    <GoogleMap address='100 North Broadway #160 Edmond, Oklahoma 73034' />
+                    <GoogleMap address='100 N Broadway Ste 160, Edmond, OK 73034' />
                 </Flex>
             </Flex>
         </Section>
