@@ -102,7 +102,7 @@ const ContactUs = () => {
                             <Link href={`tel: ${data.phone}`}>{data.phone}</Link>
                         </ContactItem>
                         <Hours />
-                        <Link style={{ alignSelf: isBreakpoint && 'center' }} href='mailto:alex@apak.design?subject=Contact Us'>
+                        <Link style={{ alignSelf: isBreakpoint && 'center' }} href={'mailto:solutions@shatterdcell.com?subject=Shatter\'d Cell Solutions - Contact Us'}>
                             <Button $flex $gap='.5rem' $primary $centered>
                                 <Text>Send a Message</Text>
                                 <FontAwesomeIcon icon={faEnvelope} />

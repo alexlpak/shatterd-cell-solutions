@@ -12,7 +12,7 @@ const ReviewCard = ({ author_name, profile_photo_url, relative_time_description,
     return (
         <Card $width='fit-content' $margin='0 auto' $padding='2rem' $border={`2px solid ${theme.colors.lightGray.main}`}>
             <Flex $gap='1rem' $alignItems='center' $width='100%'>
-                <ProfileImage $size='4rem' src={profile_photo_url || null} />
+                <ProfileImage alt='google review profile image' $size='4rem' src={profile_photo_url || null} />
                 <Flex $flexDirection='column'>
                     <Text $fontWeight={600}>{author_name}</Text>
                     <Text>{relative_time_description}</Text>

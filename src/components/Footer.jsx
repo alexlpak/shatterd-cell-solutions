@@ -21,10 +21,10 @@ const Footer = () => {
             <Flex $alignItems='center' $justifyContent={isBreakpoint ? 'center' : 'space-between'} $width='100%' $gap='1rem'>
                 <Text $maxWidth='100%' $textAlign='center'>Copyright © 2022 Shatter'd Cell Solutions - All Rights Reserved.</Text>
                 <Flex $gap='1rem'>
-                    <Link href='https://www.facebook.com/shatterdcell/' target='_blank'>
+                    <Link title='link to Facebook page' href='https://www.facebook.com/shatterdcell/' target='_blank'>
                         <FontAwesomeIcon icon={faFacebookSquare} size='2x' />
                     </Link>
-                    <Link href='https://www.instagram.com/shatterd_cell_solutions_' target='_blank'>
+                    <Link title='link to Instagram page' href='https://www.instagram.com/shatterd_cell_solutions_' target='_blank'>
                         <FontAwesomeIcon icon={faInstagramSquare} size='2x' />
                     </Link>
                 </Flex>

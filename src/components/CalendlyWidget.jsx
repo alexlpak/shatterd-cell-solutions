@@ -6,6 +6,7 @@ const CalendlyWidget = () => {
 
     return (
         <InlineWidget
+            title='Calendly widget - schedule an appointment'
             styles={{
                 height: '100vh'
             }}

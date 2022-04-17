@@ -56,13 +56,13 @@ const HeaderLinks = ({ isHomePage, isMobile }) => {
     const HomeLink = () => {
         if (isHomePage) {
             return (
-                <Link onClick={() => smoothScrollToTop()}>
+                <Link as='li' onClick={() => smoothScrollToTop()}>
                     <Text $fontWeight={500}>Home</Text>
                 </Link>
             );
         }
         else return (
-            <RouterLink to='/'>
+            <RouterLink  to='/'>
                 <Text $fontWeight={500}>Home</Text>
             </RouterLink>
         );
@@ -76,6 +76,7 @@ const HeaderLinks = ({ isHomePage, isMobile }) => {
                 </Link>
             }
             <Flex
+                as='ul'
                 $flexDirection={isMobile ? 'column' : 'row'}
                 style={{
                     display: isMobile && !isOpen ? 'none' : 'flex',
@@ -88,16 +89,16 @@ const HeaderLinks = ({ isHomePage, isMobile }) => {
                 <HomeLink />
                 {isHomePage &&
                     <>
-                        <Link onClick={() => smoothScrollToElement('#services')}>
+                        <Link as='li' onClick={() => smoothScrollToElement('#services')}>
                             <Text $fontWeight={500}>Services</Text>
                         </Link>
-                        <Link onClick={() => smoothScrollToElement('#reviews')}>
+                        <Link as='li' onClick={() => smoothScrollToElement('#reviews')}>
                             <Text $fontWeight={500}>Reviews</Text>
                         </Link>
-                        <Link onClick={() => smoothScrollToElement('#promotions')}>
+                        <Link as='li' onClick={() => smoothScrollToElement('#promotions')}>
                             <Text $fontWeight={500}>Sell</Text>
                         </Link>
-                        <Link onClick={() => smoothScrollToElement('#contact')}>
+                        <Link as='li' onClick={() => smoothScrollToElement('#contact')}>
                             <Text $fontWeight={500}>Contact</Text>
                         </Link>
                     </>
@@ -116,7 +117,7 @@ const Header = () => {
         <HeaderStyled as='header' $padding='2rem'>
             <Flex $alignItems='center' $justifyContent='space-between' $width='100%' $position='relative'>
                 <RouterLink to='/'>
-                    <Image src={CompanyLogo} $height='3rem' />
+                    <Image alt='shattered cell solutions company logo' src={CompanyLogo} $height='3rem' />
                 </RouterLink>
                 <HeaderLinks isMobile={isBreakpoint} isHomePage={location.pathname === '/'} />
             </Flex>
