@@ -22,7 +22,7 @@ const Reviews = () => {
 
     useEffect(() => {
         const existingScript = document.getElementById('gmapsapi');
-        if (!existingScript) {
+        if (!existingScript && !JSON.parse(localStorage.getItem('google-reviews')).length) {
             const script = document.createElement('script');
             script.src = `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=${process.env.REACT_APP_GOOGLE_API_KEY}`;
             script.id = 'gmapsapi';
@@ -63,7 +63,7 @@ const Reviews = () => {
                         }
                     }}
                 >
-                    {reviews && reviews.map((review, index) => {
+                    {reviews && reviews.filter(review => review.rating >= 4).map((review, index) => {
                         return (
                             <SplideSlide key={`${review.text+index}`}>
                                 <ReviewCard {...review} />
