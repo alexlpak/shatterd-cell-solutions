@@ -19,7 +19,7 @@ const cardData = [
 
 const sectionData = {
     title: 'Services',
-    description: 'We know that people break more than just their phones, so we offer device repair on just about all your favorite devices.'
+    description: 'We offer device repair on just about all your favorite devices.'
 };
 
 const Services = () => {
