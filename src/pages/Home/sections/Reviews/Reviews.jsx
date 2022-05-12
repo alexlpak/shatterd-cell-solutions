@@ -12,7 +12,7 @@ import '@splidejs/react-splide/css';
 
 const sectionData = {
     title: 'Reviews',
-    description: 'We guarantee great service here! Don\'t just take our word for it. Here\'s what some of our customer have to say:'
+    description: 'We guarantee great service here! Don\'t just take our word for it. Here\'s what some of our customers have to say:'
 };
 
 const Reviews = () => {
