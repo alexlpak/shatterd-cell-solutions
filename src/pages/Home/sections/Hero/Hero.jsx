@@ -31,7 +31,7 @@ const HeroTextWrapper = styled.div`
     };
 `;
 
-const HeaderText = styled.h1`
+const HeaderText = styled.div`
     display: flex;
     flex-direction: column;
 `;
