@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import useLocalStorage from '../../../../hooks/useLocalStorage';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
+import { addDaysToDate } from '../../../../helper/dates';
 
 const sectionData = {
     title: 'Reviews',
@@ -21,8 +22,15 @@ const Reviews = () => {
     const theme = useTheme();
 
     useEffect(() => {
-        const existingScript = document.getElementById('gmapsapi');
-        if (!existingScript && !JSON.parse(localStorage.getItem('google-reviews')).length) {
+        const storedTimeout = localStorage.getItem('google-reviews-timeout');
+        if (storedTimeout && new Date(storedTimeout) < new Date()) {
+            localStorage.removeItem('google-reviews');
+            localStorage.removeItem('google-reviews-timeout');
+        }
+        else if (!storedTimeout) localStorage.setItem('google-reviews-timeout', addDaysToDate(15));
+        
+        const storedReviewArrayLength = JSON.parse(localStorage.getItem('google-reviews'))?.length;
+        if (!storedReviewArrayLength) {
             const script = document.createElement('script');
             script.src = `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=${process.env.REACT_APP_GOOGLE_API_KEY}`;
             script.id = 'gmapsapi';
