@@ -3,6 +3,7 @@ import { Heading } from '../../../../components/Heading.styled';
 import { Text } from '../../../../components/Text.styled';
 import { Button } from '../../../../components/Button.styled';
 import { Flex } from '../../../../components/Flex.styled';
+import { Grid } from '../../../../components/Grid.styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faLocationDot, faPhone, faEnvelope, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { useTheme } from 'styled-components';
@@ -20,13 +21,13 @@ const data = {
     address: '100 North Broadway #160\nEdmond, Oklahoma 73034',
     phone: '(405) 562-3140',
     hours: {
-        sun: '12:00 PM - 4:00 PM',
+        sun: 'Appointment Only',
         mon: '10:00 AM - 7:00 PM',
         tue: '10:00 AM - 7:00 PM',
         wed: '10:00 AM - 7:00 PM',
         thu: '10:00 AM - 7:00 PM',
         fri: '10:00 AM - 7:00 PM',
-        sat: '10:00 AM - 3:00 PM',
+        sat: '10:00 AM - 4:00 PM',
     }
 };
 
@@ -58,27 +59,32 @@ const ContactItem = ({ icon, text, children, hover, onClick }) => {
 const Hours = () => {
     const [hoursVisible, setHoursVisible] = useState(false);
     const { hours } = data;
+
+    const todayKey = Object.keys(hours)[new Date().getDay()];
+    const todaysHours = hours[todayKey];
+
     return (
-        <ContactItem hover={true} icon={faClock} onClick={() => setHoursVisible(prevVal => !prevVal)}>
+        <ContactItem hover={true} icon={faClock} onClick={() => setHoursVisible(current => !current)}>
             <Flex $gap='.5rem' $alignItems='center' $flexWrap='noWrap'>
                 {hoursVisible ?
-                    <>
-                        <Flex $flexDirection='column' $gap='.5rem' $flexWrap='nowrap' $justifyContent='center'>
-                            {
-                                Object.keys(hours).map(day => {
-                                    return <Text $whiteSpace='break-spaces' key={day}>{capitalizeWord(day)} {hours[day]}</Text>
-                                })
-                            }
-                            
-                        </Flex>
-                        <FontAwesomeIcon icon={faAngleUp} />
-                    </>
+                    <Grid $gap='.5rem'>
+                        {Object.keys(hours).map(day => {
+                            return (
+                                <Grid key={`hours-item-${day}`} $gap='.5rem' $gridTemplateColumns='2.5rem auto'>
+                                    <Text $whiteSpace='break-spaces' key={`${day}-label`}>{capitalizeWord(day)}</Text>
+                                    <Text $whiteSpace='break-spaces' key={`${day}-hours`}>{hours[day]}</Text>
+                                </Grid>
+                            )
+                        })}
+                    </Grid>
                      :
                     <Flex $gap='.5rem' $flexWrap='nowrap' $alignItems='center' $justifyContent='center'>
-                        <Text>Open today {hours[Object.keys(hours)[new Date().getDay()]]}</Text>
-                        <FontAwesomeIcon icon={faAngleDown} />
+                        <Text>
+                            {todayKey !== 'sun' ? 'Open today' : 'Open today by'} {todayKey !== 'sun' ? todaysHours : todaysHours.toLowerCase()}
+                        </Text>
                     </Flex>
                 }
+                <FontAwesomeIcon icon={hoursVisible ? faAngleUp : faAngleDown} />
             </Flex>
         </ContactItem>
     );
